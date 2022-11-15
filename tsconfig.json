@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "ESNext",
+    "target": "es2016",
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
+    "strict": true,
+    "incremental": false,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "types": [
+      "vite/client",
+      "vite-plugin-pwa/client"
+    ],
+    "paths": {
+      "vitepress-theme-minimalist": [
+        "src/index.ts"
+      ],
+      "vitepress-theme-minimalist/config": [
+        "src/vitepress/config/baseConfig.js"
+      ],
+      "vitepress-theme-minimalist/*": [
+        "src/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "docs/.vitepress/**/*",
+    "node_modules/@vueuse/core/index.d.ts"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}

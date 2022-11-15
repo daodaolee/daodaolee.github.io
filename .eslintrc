@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "@antfu"
+  ],
+  "rules": {
+    "comma-dangle": "off",
+    "no-multiple-empty-line": "off",
+    "no-trailing-spaces": "off",
+    "eol-last":"off",
+    "@typescript-eslint/comma-dangle": "off",
+    "@typescript-eslint/ban-ts-ignore": "off"
+  }
+}
