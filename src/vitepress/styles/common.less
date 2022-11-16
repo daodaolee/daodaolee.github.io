@@ -1,0 +1,145 @@
+// markdown
+.page {
+  line-height: 1.75;
+
+  h1 {
+    color: var(--c-text);
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.111;
+    font-size: 2rem;
+
+    &+* {
+      margin-top: 0 !important;
+    }
+  }
+
+  h2 {
+    color: var(--markdown-code-color);
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.3333333;
+
+    &+* {
+      margin-top: 0 !important;
+    }
+  }
+
+  h3 {
+    color: inherit;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 0.625em;
+    line-height: 1.6;
+    opacity: .9;
+  }
+
+  p {
+    margin: 1.25rem 0;
+  }
+
+  blockquote {
+    border-left-width: 0.31rem;
+    line-height: 1.25rem;
+    margin: 1.2rem 0;
+
+    p {
+      margin: 0
+    }
+  }
+
+  ul>li {
+    margin: 0.5rem 0;
+    list-style: none;
+    padding-left: 0.5rem;
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      background-color: #aaaaaa;
+      border-radius: 50%;
+      width: 0.375em;
+      height: 0.375em;
+      top: 0.6875em;
+      left: -0.85rem;
+      display: block;
+    }
+
+    p {
+      margin: 0;
+    }
+
+  }
+
+  ol>li {
+    list-style: none;
+    padding-left: 0.5rem;
+
+    &:before {
+      content: counter(list-item, var(--list-counter-style, decimal)) ".";
+      position: absolute;
+      font-weight: 400;
+      font-family: inherit;
+      // color: #6b7280;
+      left: 0;
+    }
+  }
+
+  span.lang {
+    display: none;
+  }
+
+  code {
+    // color: inherit;
+    font-weight: bold;
+    font-size: .875rem;
+    // color: var(--markdown-code-color);
+    // font-family: var(--font-family-dmmono);
+    font-family: ui-monospace, Menlo, Monaco, Consolas, monospace;
+    font-weight: 600;
+
+    &:before,
+    &:after {
+      content: "`"
+    }
+  }
+
+  [class*='language-'] {
+    button.copy {
+      display: none;
+    }
+
+    pre {
+      font-size: 0.9rem;
+      line-height: 1.7142857;
+      background: var(--markdown-pre-bg);
+      padding: 0.8rem 1rem;
+      overflow-x: auto;
+
+      code {
+        font-family: var(--font-family-dmmono);
+        font-weight: 400;
+
+        &:before,
+        &:after {
+          content: ""
+        }
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .shiki.dark-plus {
+    display: none;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .shiki.light-plus {
+    display: none;
+  }
+}

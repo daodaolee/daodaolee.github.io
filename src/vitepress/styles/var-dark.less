@@ -1,8 +1,42 @@
-:root {
-  // bg
-  --c-bg: #212121;
-  --c-white: #ffffff;
+@media (prefers-color-scheme:dark) {
+  :root {
+    // color
+    --c-bg: #111111;
+    --c-white: #ffffff;
+    --c-page-color: #bcbcbc;
+    // --c-color-deep: #fff;
+    --pre-bg-color: #151515;
 
-  // text
-  --c-text: var(--c-white);
+    // text
+    --c-text: var(--c-white);
+
+    // page
+    --c-page-text: var(--c-page-color);
+    --markdown-code-color: var(--c-white);
+    --markdown-pre-bg: var(--pre-bg-color);
+  }
+
+  .dark\:bg-gray-50\/10,
+  .dark\:hover\:bg-gray-50\/10:hover {
+    background-color: rgba(249, 250, 251, 0.1);
+  }
+
+  .dark\:hover\:bg-\[\#ea4c89\]:hover {
+    --un-bg-opacity: 1;
+    background-color: rgba(234, 76, 137, var(--un-bg-opacity));
+  }
+
+  .dark\:hover\:bg-gray-50\/20:hover {
+    background-color: rgba(249, 250, 251, 0.2);
+  }
+
+  .dark\:hover\:bg-white:hover {
+    --un-bg-opacity: 1;
+    background-color: rgba(255, 255, 255, var(--un-bg-opacity));
+  }
+
+  .dark\:hover\:text-gray-900:hover {
+    --un-text-opacity: 1;
+    color: rgba(17, 24, 39, var(--un-text-opacity));
+  }
 }

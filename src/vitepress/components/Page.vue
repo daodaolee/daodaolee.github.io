@@ -3,17 +3,14 @@
 </script>
 
 <template>
-  <div class="footer">
-    <div class="container">
-      <slot name="top" />
-      <Content class="content" />
-      <slot name="bottom" />
-    </div>
-  </div>
+  <main class="page pt-12">
+    <Content class="content max-w-prose mx-auto px-6 md:px-0" />
+  </main>
 </template>
 
 <style scoped>
-.footer{
-  padding-top: var(--header-height)
+.page{
+  color: var(--c-page-text);
+  /* font-family: 'Inter '; */
 }
 </style>

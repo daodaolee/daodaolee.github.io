@@ -291,3 +291,58 @@ form {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
+
+.dark {
+  color-scheme: dark
+}
+
+
+.bg-gray-50 {
+  --un-bg-opacity: 1;
+  background-color: rgba(249, 250, 251, var(--un-bg-opacity));
+}
+
+.hover\:bg-\[\#00ACEE\]:hover {
+  --un-bg-opacity: 1;
+  background-color: rgba(0, 172, 238, var(--un-bg-opacity));
+}
+
+.hover\:bg-\[\#ea4c89\]:hover {
+  --un-bg-opacity: 1;
+  background-color: rgba(234, 76, 137, var(--un-bg-opacity));
+}
+
+.hover\:bg-\[\#fb7299\]:hover {
+  --un-bg-opacity: 1;
+  background-color: rgba(251, 114, 153, var(--un-bg-opacity));
+}
+
+.hover\:bg-\[\#ff8200\]:hover {
+  --un-bg-opacity: 1;
+  background-color: rgba(255, 130, 0, var(--un-bg-opacity));
+}
+
+.hover\:bg-gray-100:hover {
+  --un-bg-opacity: 1;
+  background-color: rgba(243, 244, 246, var(--un-bg-opacity));
+}
+
+.hover\:bg-gray-700:hover {
+  --un-bg-opacity: 1;
+  background-color: rgba(55, 65, 81, var(--un-bg-opacity));
+}
+
+.from-\[\#fd5949\] {
+  --un-gradient-from: rgba(253, 89, 73, var(--un-from-opacity, 1));
+  --un-gradient-stops: var(--un-gradient-from), var(--un-gradient-to, rgba(255, 255, 255, 0));
+}
+
+.to-\[\#d6249f\] {
+  --un-gradient-to: rgba(214, 36, 159, var(--un-to-opacity, 1));
+}
+
+.hover\:bg-gradient-to-r:hover {
+  --un-gradient-shape: to right;
+  --un-gradient: var(--un-gradient-shape), var(--un-gradient-stops);
+  background-image: linear-gradient(var(--un-gradient));
+}
