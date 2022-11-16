@@ -1,20 +1,27 @@
 @media (prefers-color-scheme:dark) {
-  :root {
-    // color
-    --c-bg: #111111;
-    --c-white: #ffffff;
-    --c-page-color: #bcbcbc;
-    // --c-color-deep: #fff;
-    --pre-bg-color: #151515;
+  // :root {
+  //   // color
+  //   --c-bg: #111111;
+  //   --c-white: #ffffff;
+  //   --c-page-color: #bcbcbc;
+  //   // --c-color-deep: #fff;
+  //   --pre-bg-color: #151515;
+  //   --pre-strong-color: #eeeeee;
+  //   --pre-line-color: #7d7d7d4d;
+  //   --pre-line-hover-color: #bbbbbb;
 
-    // text
-    --c-text: var(--c-white);
 
-    // page
-    --c-page-text: var(--c-page-color);
-    --markdown-code-color: var(--c-white);
-    --markdown-pre-bg: var(--pre-bg-color);
-  }
+  //   // text
+  //   --c-text: var(--c-white);
+
+  //   // page
+  //   --c-page-text: var(--c-page-color);
+  //   --markdown-code-color: var(--c-white);
+  //   --markdown-pre-bg: var(--pre-bg-color);
+  //   --markdown-pre-strong-color: var(--pre-strong-color);
+  //   --markdown-a-line: var(--pre-line-color);
+  //   --markdown-a-line-hover: var(--pre-line-hover-color);
+  // }
 
   .dark\:bg-gray-50\/10,
   .dark\:hover\:bg-gray-50\/10:hover {
@@ -39,4 +46,29 @@
     --un-text-opacity: 1;
     color: rgba(17, 24, 39, var(--un-text-opacity));
   }
+}
+
+html.dark {
+  color-scheme: dark;
+  // color
+  --c-bg: #111111;
+  --c-white: #ffffff;
+  --c-page-color: #bcbcbc;
+  // --c-color-deep: #fff;
+  --pre-bg-color: #151515;
+  --pre-strong-color: #eeeeee;
+  --pre-line-color: #7d7d7d4d;
+  --pre-line-hover-color: #bbbbbb;
+
+
+  // text
+  --c-text: var(--c-white);
+
+  // page
+  --c-page-text: var(--c-page-color);
+  --markdown-code-color: var(--c-white);
+  --markdown-pre-bg: var(--pre-bg-color);
+  --markdown-pre-strong-color: var(--pre-strong-color);
+  --markdown-a-line: var(--pre-line-color);
+  --markdown-a-line-hover: var(--pre-line-hover-color);
 }

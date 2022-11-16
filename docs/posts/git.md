@@ -4,7 +4,7 @@ date: 2021-10-24 18:50:08
 tags:
  - git
 ---
-
+[[toc]]
 # 背景
 
 Linus Torvalds，linux作者

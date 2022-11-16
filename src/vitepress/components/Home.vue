@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
 import { ref } from 'vue'
+import { useDark, useToggle } from '@vueuse/core'
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
 
 interface PageAttr {
   name: string
@@ -26,20 +29,35 @@ const bios = [
   'Currently working at Hangzhou.',
   'I like to do some fun projects.'
 ]
+const baseIconClass = 'inline-flex px-3 py-2 mt-2 mr-2 rounded-md bg-gray-50 transition-colors  hover:text-white dark:bg-gray-50/10 '
 const website = [{
   icon: 'i-ri-book-2-line',
-  name: 'Post'
+  name: 'Post',
+  href: '/posts/',
+  target: '_self',
+  class: 'hover:bg-gray-700 dark:hover:bg-white dark:hover:text-gray-900'
 }, {
-  icon: 'i-ri-github-fill'
+  icon: 'i-ri:github-line',
+  href: 'https://github.com/daodaolee',
+  class: 'hover:bg-gray-700 dark:hover:bg-white dark:hover:text-gray-900'
 }, {
-  icon: 'i-ri-twitter-fill'
+  icon: 'i-ri:twitter-line',
+  class: 'hover:bg-[#00ACEE]',
+  href: 'https://twitter.com/daodaolee_'
 }, {
-  icon: 'i-ri-instagram-line'
+  icon: 'i-ri-instagram-line',
+  class: 'decoration-none hover:bg-gradient-to-r from-[#fd5949] to-[#d6249f]',
+  href: 'https://www.instagram.com/daodaoleee/'
 }, {
-  icon: 'i-ri-dribbble-line'
+  icon: 'i-ri-dribbble-line',
+  class: 'hover:bg-[#ea4c89] dark:hover:bg-[#ea4c89]',
+  href: 'https://dribbble.com/daodaolee'
 }, {
-  icon: 'i-ri-bilibili-fill'
+  icon: 'i-ri-bilibili-fill',
+  class: 'hover:bg-[#fb7299]',
+  href: 'https://space.bilibili.com/294106298?spm_id_from=333.1007.0.0'
 }]
+
 const projects = [{
   name: 'Weekly Tracker',
   descr: 'Translate some front-end periodicals',
@@ -102,13 +120,23 @@ const projects = [{
       <div mt-4>
         <a
           v-for="(site, index) in website" :key="index"
-          target="_blank"
-          href="https://github.com/daodaolee" class="inline-flex px-3 py-2 mt-2 mr-2 rounded-md bg-gray-50 transition-colors hover:bg-gray-700 dark:hover:bg-white dark:hover:text-gray-900 hover:text-white dark:bg-gray-50/10"
+          :target="site.target || '_blank'"
+          :href="site.href"
+          :class="baseIconClass + site.class || ''"
         >
           <div text-xl>
             <div :class="site.icon" />
           </div>
           <div v-if="site.name" text-sm ml-1>{{ site.name }}</div>
+        </a>
+        <a
+          target="_blank"
+          class="inline-flex cursor-pointer px-3 py-2 mt-2 mr-2 rounded-md bg-gray-50 transition-colors hover:bg-gray-700 dark:hover:bg-white dark:hover:text-gray-900 hover:text-white dark:bg-gray-50/10"
+          @click="toggleDark()"
+        >
+          <div text-xl>
+            <div :class="[isDark ? 'i-ri-moon-line' : 'i-ri:sun-line']" />
+          </div>
         </a>
       </div>
     </header>

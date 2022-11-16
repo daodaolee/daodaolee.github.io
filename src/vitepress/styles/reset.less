@@ -13,6 +13,7 @@ html {
   tab-size: 4;
   transition: background-color ease .4s;
   font-family: var(--font-family-base);
+  scroll-behavior: smooth;
 }
 
 body {
@@ -167,11 +168,16 @@ img {
 ul,
 ol {
   padding-left: 1.25em;
+
+  li {
+    list-style: none;
+  }
 }
 
 li>ul,
 li>ol {
   margin: 0;
+
 }
 
 table {

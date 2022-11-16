@@ -1,16 +1,20 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute } from 'vitepress'
+import Post from './Post.vue'
+const route = useRoute()
 
+const isPosts = computed(() => {
+  return Boolean(route.path === '/posts/')
+})
 </script>
 
 <template>
-  <main class="page pt-12">
+  <Post v-if="isPosts" class="content max-w-prose mx-auto px-6 md:px-0" />
+  <main class="page pt-25 pb-15">
     <Content class="content max-w-prose mx-auto px-6 md:px-0" />
   </main>
 </template>
 
 <style scoped>
-.page{
-  color: var(--c-page-text);
-  /* font-family: 'Inter '; */
-}
 </style>
