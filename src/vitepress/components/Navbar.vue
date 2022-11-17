@@ -1,17 +1,11 @@
 <script lang="ts" setup>
 import { useData } from 'vitepress'
 import { useDark, useToggle } from '@vueuse/core'
-import { useRepo } from '../composables/repo'
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
-
-console.log(useData())
 const { theme } = useData()
 const { logo } = theme.value
-
-const repo = useRepo()
-console.log(repo)
 
 const website = [{
   name: 'Posts',
@@ -22,7 +16,8 @@ const website = [{
   xlShowText: true
 }, {
   name: 'Movies',
-  href: '',
+  href: '/movies/',
+  target: '_self',
   // 小屏完全消失
   hidden: true,
   xlShowText: true
@@ -70,7 +65,6 @@ const website = [{
         <span v-if="site.name" text-sm ml-1 class="lt-md:hidden">{{ site.name }}</span>
       </a>
       <a
-        target="_blank"
         class="cursor-pointer  op-60"
         @click="toggleDark()"
       >

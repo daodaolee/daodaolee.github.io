@@ -1,18 +1,31 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useRoute } from 'vitepress'
-import Post from './Post.vue'
-const route = useRoute()
+// import { computed, defineAsyncComponent } from 'vue'
+import { useData } from 'vitepress'
+import { utcToString } from '../tools'
 
-const isPosts = computed(() => {
-  return Boolean(route.path === '/posts/')
-})
+const { page } = useData()
+const { frontmatter } = page.value
+const { date, tags } = frontmatter
 </script>
 
 <template>
-  <Post v-if="isPosts" class="content max-w-prose mx-auto px-6 md:px-0" />
-  <main class="page pt-25 pb-15">
-    <Content class="content max-w-prose mx-auto px-6 md:px-0" />
+  <main class="content max-w-73ch mx-auto px-6 md:px-0 pb-15">
+    <div class="pt-25">
+      <div class="pb-5">
+        <h1 class="title mt-0 text-2.2rem mb-5">
+          {{ frontmatter.title }}
+        </h1>
+        <div class="op-60 flex items-end">
+          <span>{{ date && utcToString(date) }}</span>
+          <div class="text-0.85rem pl-1.8rem">
+            <span v-for="(tag, index) in tags" :key="index">
+              #{{ tag }}&nbsp;
+            </span>
+          </div>
+        </div>
+      </div>
+      <Content class="page" />
+    </div>
   </main>
 </template>
 

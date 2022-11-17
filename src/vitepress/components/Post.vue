@@ -1,17 +1,22 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
+// const { readFileSync } = require('fs')
+// import { getFile } from '../tools'
+// const route = useRoute()
+// const { component } = route
 const { theme } = useData()
 const { posts } = theme.value
+console.log(posts)
 </script>
 
 <template>
-  <div class="posts pt-25">
+  <div class="post pt-25 max-w-73ch mx-auto px-6 md:px-0 pb-15">
     <ul>
       <template v-for="(post) in posts" :key="post.text">
         <div relative h20 pointer-events-none>
-          <span text-8em op5 absolute left--3rem top--2rem font-bold>{{ post.year }}</span>
+          <span text-8em op10 absolute left--3rem top--2rem font-bold>{{ post.year }}</span>
         </div>
-
+        <!-- <a :href="withBase(article)"></a> -->
         <a
           v-for="(item, index) in post.post" :key="index"
           :href="`${item.link}.html`" 

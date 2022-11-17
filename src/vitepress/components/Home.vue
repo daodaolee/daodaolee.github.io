@@ -54,7 +54,7 @@ const website = [{
   href: 'https://dribbble.com/daodaolee'
 }, {
   icon: 'i-ri-bilibili-fill',
-  class: 'hover:bg-[#fb7299]',
+  class: 'hover:bg-[#fb7299] hover:text-white dark:bg-gray-50/10',
   href: 'https://space.bilibili.com/294106298?spm_id_from=333.1007.0.0'
 }]
 
