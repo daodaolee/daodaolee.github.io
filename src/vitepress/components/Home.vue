@@ -144,6 +144,7 @@ const projects = [{
       <a
         v-for="(project, index) in projects"
         :key="index" 
+        target="_blank"
         :href="project.href"
         class="px-4 py-3 rounded-md bg-gray-100 transition-colors decoration-none hover:bg-gray-200 dark:bg-gray-50/10 dark:hover:bg-gray-50/20"
       >
