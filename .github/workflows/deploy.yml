@@ -32,9 +32,10 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: CNAME
-        run: cd docs/.vuepress/dist
-        run: echo 'daodaolee.cn' > CNAME
+      - uses: "finnp/create-file-action@master"
+        env:
+          FILE_NAME: "./docs/.vitepress/dist/CNAME"
+          FILE_DATA: "daodaolee.cn"
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
