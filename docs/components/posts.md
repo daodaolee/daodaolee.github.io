@@ -1,3 +1,0 @@
----
-isPosts: true
----

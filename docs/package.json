@@ -1,7 +1,7 @@
 {
-  "name": "vitepress-theme-minimalist-docs",
+  "name": "blog",
   "devDependencies": {
     "vite-plugin-pwa": "^0.12.0",
-    "vitepress-theme-minimalist": "workspace:^"
+    "minimalist": "workspace:^"
   }
 }

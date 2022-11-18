@@ -1,14 +1,12 @@
 ---
-title: 我做了一款vuepress的音乐可视化播放插件
+title: 一款vuepress的音乐可视化播放插件
 date: 2021-12-26 17:50:08
-categories:
- - 前端
 tags:
- - 可视化
+ - webAudio
 ---
 [[toc]]
 
-体验地址：[博客](https://daodaolee.cn/music/#%E5%96%9C%E6%AC%A2%E7%9A%84)，[github](https://github.com/daodaolee/vuepress-plugin-awesome-musicplayer)，[npm](https://www.npmjs.com/package/vuepress-plugin-awesome-musicplayer)
+体验地址：[github](https://github.com/daodaolee/vuepress-plugin-awesome-musicplayer)，[npm](https://www.npmjs.com/package/vuepress-plugin-awesome-musicplayer)
 
  ## 前言
 
@@ -70,7 +68,7 @@ tags:
 
 翻来覆去，最终还是决定，歌曲用户传进来，然后再传一个歌曲id，封面和歌词走接口，歌曲就是传进来的音源链接，使用方法如下：
 
-```vue
+```html
 <MusicPlayer musicId="xxx" musicSrc="xxx.mp3" style="margin:0 auto">
 ```
 
@@ -88,4 +86,4 @@ tags:
 
 该插件已发npm包，[awesome-vuepress](https://github.com/vuepress/awesome-vuepress) 仓库也已收录，可能多少还会有点体验上的小问题，会慢慢修复的。大家也可以提建议，能听进去算我输！
 
-项目写的匆匆忙忙，希望可以做一点更有深度的东西吧——致自己。
+项目写的匆匆忙忙......

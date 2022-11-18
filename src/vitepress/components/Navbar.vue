@@ -5,7 +5,7 @@ import { useDark, useToggle } from '@vueuse/core'
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
 const { theme } = useData()
-const { logo } = theme.value
+const { logo, logoDark } = theme.value
 
 const website = [{
   name: 'Posts',
@@ -33,22 +33,25 @@ const website = [{
 }, {
   icon: 'i-ri-instagram-line',
   class: 'decoration-none hover:bg-gradient-to-r from-[#fd5949] to-[#d6249f]',
-  hidden: true
+  hidden: true,
+  href: 'https://www.instagram.com/daodaoleee/',
 }, {
   icon: 'i-ri-dribbble-line',
   class: 'hover:bg-[#ea4c89] dark:hover:bg-[#ea4c89]',
-  hidden: true
+  hidden: true,
+  href: 'https://dribbble.com/daodaolee'
 }, {
   icon: 'i-ri-bilibili-fill',
   class: 'hover:bg-[#fb7299]',
-  hidden: true
+  hidden: true,
+  href: 'https://space.bilibili.com/294106298?spm_id_from=333.1007.0.0'
 }]
 </script>
 
 <template>
   <header class="w-100vw p-6 flex items-center justify-between fixed">
     <a href="/">
-      <img :src="logo" class="w-10 h-10">
+      <img :src="isDark ? logoDark : logo" class="w-10 h-10">
     </a>
     
     <div class="nav-icons flex items-center gap-5">

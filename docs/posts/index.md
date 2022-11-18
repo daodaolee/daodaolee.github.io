@@ -1,3 +1,3 @@
 ---
-postlist: true
+post: true
 ---

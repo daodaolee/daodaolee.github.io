@@ -1,28 +1,22 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
-import { ref } from 'vue'
+
 import { useDark, useToggle } from '@vueuse/core'
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
 
-interface PageAttr {
-  name: string
-  href: string
-  date: string
-}
-
 const { theme } = useData()
-console.log(useData())
-const { lastestPage } = theme.value
-const pageData = ref<PageAttr[]>([])
+const { posts } = theme.value
 
-Object.keys(lastestPage).forEach((item) => {
-  pageData.value.push({
-    name: lastestPage[item].text,
-    href: lastestPage[item].link,
-    date: lastestPage[item].date
+const allPosts = posts
+  .filter((item: any) => item.frontMatter.title)
+  .map((item: any) => {
+    return {
+      title: item.frontMatter.title,
+      date: item.frontMatter.date,
+      link: item.regularPath
+    }
   })
-})
 
 const bios = [
   'Front-end developer / Fover of minimalism.',
@@ -106,7 +100,7 @@ const projects = [{
     <header class="outfit mt-12 md:mt-18">
       <h1 class="text-5xl">
         <span class="block">Hello,</span>
-        <span class="block mt-2">I'm Dylan.</span>
+        <span class="block mt-2">I'm Dao.</span>
       </h1>
       <div class="mt-6">
         <div
@@ -173,12 +167,12 @@ const projects = [{
     </h2>
     <div class="grid grid-cols-1 -mx-2">
       <a
-        v-for="(page, index) in pageData"
+        v-for="(page, index) in allPosts.slice(0, 5)"
         :key="index"
-        :href="page.href" 
+        :href="page.link" 
         class="flex px-3 py-2 mt-2 mr-2 rounded-md transition-colors decoration-none hover:bg-gray-100 dark:hover:bg-gray-50/10"
       >
-        <div flex-1>{{ page.name }}</div>
+        <div flex-1>{{ page.title }}</div>
         <div op-40 font-normal class="hidden sm:block">{{ page.date }}</div>
       </a>
     </div>

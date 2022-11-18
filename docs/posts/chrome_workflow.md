@@ -2,8 +2,9 @@
 title: 深入了解Chrome浏览器的工作流程
 date: 2021-12-08 03:46:51
 tags:
- - 浏览器
+ - chrome
 ---
+[[toc]]
 
 ## 前言
 
@@ -24,7 +25,7 @@ tags:
 * 安全性、沙盒模式和没有危险的浏览
 * Gears，标准和开放源代码
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211207235815.png" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211207235815.png"  style="zoom: 50%;" />
 
 ## 一、CPU，GPU内存和多进程架构
 
@@ -34,7 +35,7 @@ tags:
 
 CPU是计算机的大脑，可以处理许多不同的任务，大多数CPU都是单芯片。一个内核相当于同一个芯片中的另一个CPU。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208000223.png" style="zoom: 50%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208000223.png"  />
 
 
 
@@ -42,19 +43,19 @@ CPU是计算机的大脑，可以处理许多不同的任务，大多数CPU都�
 
 GPU最初为图形处理开发，擅长处理简单的任务，同时跨多个CPU。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208000426.png" style="zoom: 50%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208000426.png"  />
 
 
 
 通常，应用程序使用操作系统提供的机制在 `CPU` 和 `GPU`上运行。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208000600.png" style="zoom: 50%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208000600.png" />
 
 ### 进程和线程
 
 进程可以被描述为一个应用程序的执行程序，线程是存在于进程内部并执行其进程程序的任何部分的线程。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208000831.png" style="zoom: 50%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208000831.png"/>
 
 程序在启动的时候会创建一个进程，程序也**可能**会创建线程来帮助它工作。操作系统为进程提供了一块“内存块”以供使用，并且所有应用程序状态都保存在该私有内存空间中。当关闭应用程序时，该进程也会消失，操作系统会释放内存。
 
@@ -78,7 +79,7 @@ GPU最初为图形处理开发，擅长处理简单的任务，同时跨多个CP
 
 而对于Chrome浏览器，最新架构如下图：
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208003028.png" style="zoom: 67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208003028.png" />
 
 | 进程     | 作用                                                         |
 | :------- | ------------------------------------------------------------ |
@@ -91,7 +92,7 @@ GPU最初为图形处理开发，擅长处理简单的任务，同时跨多个CP
 
 下图为不同进程指向浏览器UI的不同部分：
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208003345.png" style="zoom: 67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208003345.png" />
 
 当然也还有更多的进程，比如扩展进程和实用程序进程等等。
 
@@ -119,7 +120,7 @@ Chrome 正在经历架构更改，以将浏览器程序的每个部分作为一�
 
 站点隔离为每个跨站点 iframe 运行单独的渲染器进程，并在不同站点之间共享内存空间。同源策略是网络的核心安全模型，它确保一个站点在未经同意的情况下无法访问其他站点的数据。对于攻击者来说，绕过同源策略是安全攻击的主要目标，对于浏览器而言，需要使用进程来分隔站点。自 Chrome 67 以来，桌面上默认启用站点隔离，**选项卡中的每个跨站点 iframe 都有一个单独的渲染器进程，** 当然，也从根本上改变了 iframe 相互通信的方式。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208004717.png" style="zoom: 67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208004717.png"  />
 
 ## 二、导航跳转
 
@@ -133,13 +134,13 @@ Chrome 正在经历架构更改，以将浏览器程序的每个部分作为一�
 
    当地址栏中输入内容时，UI 线程首先询问的是“这是搜索查询还是 URL？”。在 Chrome 中，地址栏也是一个搜索输入字段，因此 UI 线程需要解析并决定是将它发送到搜索引擎，还是发送到请求的站点。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208005609.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208005609.png"  />
 
 2. 第二步：开始寻找
 
    按下回车键时，UI 线程会发起网络请求以获取站点内容。Loading spinner 显示在选项卡的一角，网络线程通过适当的协议，如 DNS 查找和为请求建立 TLS 连接。
 
-   <img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208010044.png" style="zoom: 67%;" />
+   <img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208010044.png" />
 
    此时，网络线程可能会收到服务器重定向标头，如 HTTP 301。在这种情况下，网络线程会与服务器请求重定向的 UI 线程通信。然后，将发起另一个 URL 请求。
 
@@ -147,11 +148,11 @@ Chrome 正在经历架构更改，以将浏览器程序的每个部分作为一�
 
    一旦响应的开始进入，也就是请求的 Payload，网络线程会在必要时查看流的前几个字节。响应的 Content-Type 标头应该说明它是什么类型的数据，但由于它可能丢失或错误， 因此在这里完成 `MIME 类型校验`。
 
-   <img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208010402.png" style="zoom: 67%;" />
+   <img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208010402.png" />
 
    如果响应是一个 HTML 文件，那么下一步是将数据传递给 GPU 进程，但如果它是一个 zip 文件或其他一些文件，那么它就是一个下载请求，接着他们需要将数据传递给下载管理器。
 
-   <img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208010451.png" style="zoom:67%;" />
+   <img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208010451.png" />
 
    也正是在这个地方进行安全浏览检查，如果域和相应数据跟恶意网站匹配，网络线程就会发出警报并显示警告页面，而 CORS检查 也发生在这个过程，为了确保敏感跨站点数据不扔给渲染器。
 
@@ -159,7 +160,7 @@ Chrome 正在经历架构更改，以将浏览器程序的每个部分作为一�
 
    一旦完成所有检查并且网络线程确信浏览器应该导航到请求的站点，网络线程就会告诉 UI 线程数据已准备就绪。UI线程然后找到一个渲染器进程来进行网页的渲染。
 
-   <img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208010809.png" style="zoom:67%;" />
+   <img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208010809.png"  />
 
    由于网络请求可能需要数百毫秒才能获得响应，因此应用了优化以加快此过程。当 UI 线程在第 2 步向网络线程发送 URL 请求时，它已经知道他们要导航到哪个站点。UI 线程尝试与网络请求并行地主动查找或启动渲染器进程。这样，如果一切按预期进行，当网络线程接收到数据时，渲染器进程已经处于待机状态。如果导航重定向跨站点，则可能不会使用此备用进程，在这种情况下，可能需要不同的进程。
 
@@ -169,7 +170,7 @@ Chrome 正在经历架构更改，以将浏览器程序的每个部分作为一�
 
    此时，地址栏已更新，安全指示器和站点设置 UI 反映了新页面的站点信息。选项卡的会话历史将更新，因此后退/前进按钮将逐步浏览刚刚导航到的站点。为了在关闭选项卡或窗口时促进选项卡/会话恢复，会话历史记录存储在磁盘上。
 
-   <img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208010945.png" style="zoom:67%;" />
+   <img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208010945.png"  />
 
 6. 其他步骤
 
@@ -177,7 +178,7 @@ Chrome 正在经历架构更改，以将浏览器程序的每个部分作为一�
 
    在此之后客户端 JavaScript 仍然可以加载额外的资源并呈现新的视图。
 
-   <img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208011145.png" style="zoom:67%;" />
+   <img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208011145.png"  />
 
 ### 导航到其他站点
 
@@ -187,13 +188,13 @@ Chrome 正在经历架构更改，以将浏览器程序的每个部分作为一�
 
 > 注意：不要添加无条件`beforeunload`处理程序。它会产生更多的延迟，因为需要在导航开始之前执行处理程序。仅在需要时才应添加此事件处理程序，例如，如果需要警告用户他们可能会丢失在页面上输入的数据。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208011421.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208011421.png"  />
 
 当新导航到达与当前呈现的站点不同的站点时，将调用一个单独的呈现进程来处理新的导航，同时保留当前的呈现进程以处理诸如 `unload`。有关页面生命周期状态，可以看 [这里](https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208011737.png)。
 
 下图为从浏览器进程到新渲染器进程的 2 个 IPC，告诉渲染页面并告诉旧渲染器进程卸载：
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208011833.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208011833.png"  />
 
 ### Service Worker
 
@@ -205,43 +206,43 @@ Chrome 正在经历架构更改，以将浏览器程序的每个部分作为一�
 
 注册Service Worker后，Service Worker的作用域将会保留。当导航发生时，网络线程会根据注册的 Service Worker 范围检查域，如果 Service Worker 已为该 URL 注册，则 UI 线程会查找渲染器进程以执行 Service Worker 代码。Service Worker 可能会从缓存中加载数据，从而无需从网络请求数据，或者它可能会从网络请求新资源。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208012223.png" style="zoom: 50%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208012223.png"  />
 
 下图为浏览器进程中的 UI 线程启动渲染器进程来处理服务工作者；渲染器进程中的工作线程然后从网络请求数据：
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208012250.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208012250.png"  />
 
 ### 导航预加载
 
 如果 Service Worker 最终决定从网络请求数据，浏览器进程和渲染器进程之间的这种往返可能会导致延迟。`Navigation Preloads` 是一种通过在 Service Worker 启动的同时加载资源来加速此过程的机制。它用标头标记这些请求，允许服务器决定为这些请求发送不同的内容；例如，只是更新数据而不是完整文档。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208012532.png" style="zoom: 67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208012532.png"  />
 
 ## 三、渲染
 
 导航过后，浏览器会调用渲染器(UI)进程工作。
 
-#### 渲染器进程处理Web
+### 渲染器进程处理Web
 
 渲染器进程负责选项卡内发生的所有事情。在渲染器进程中，主线程处理发送给用户的大部分代码。如果使用 Web Worker 或 Service Worker，有部分 JavaScript 由工作线程处理。合成器和光栅线程也在渲染器进程内运行，以高效、流畅地渲染页面。
 
 渲染器进程的核心工作是将 HTML、CSS 和 JavaScript 转换为用户可以与之交互的网页。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208012901.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208012901.png"  />
 
 #### 解析
 
-##### 构建DOM
+* **构建DOM**
 
-当渲染过程接收提交消息用于导航和开始接收HTML数据，主线程开始解析HTML，使之成为一个 `DOM`。
+    当渲染过程接收提交消息用于导航和开始接收HTML数据，主线程开始解析HTML，使之成为一个 `DOM`。
 
-DOM 是浏览器对页面的内部表示，也是开发人员可以通过 JavaScript 与之交互的数据结构和 API。将HTML文档解析为DOM是由HTML标准定义的，所以有时候写错标签，也会被自动纠正，具体可以查看 [解析器中的错误处理](https://html.spec.whatwg.org/multipage/parsing.html#an-introduction-to-error-handling-and-strange-cases-in-the-parser)。
+    DOM 是浏览器对页面的内部表示，也是开发人员可以通过 JavaScript 与之交互的数据结构和 API。将HTML文档解析为DOM是由HTML标准定义的，所以有时候写错标签，也会被自动纠正，具体可以查看 [解析器中的错误处理](https://html.spec.whatwg.org/multipage/parsing.html#an-introduction-to-error-handling-and-strange-cases-in-the-parser)。
 
-##### 子资源加载
+* **子资源加载**
 
-对于图像、CSS 和 JavaScript 等外部资源，需要从网络或缓存加载。主线程可以在解析构建DOM的过程中找到它们后一一请求，但为了加快速度，“预加载扫描器(preload scanner)” 是并发运行的。如果HTML 文档中有类似`<img>`或 `<link>`，预加载扫描器会查看 HTML 解析器生成的 `token`，并将请求发送到浏览器进程中的网络线程。
+    对于图像、CSS 和 JavaScript 等外部资源，需要从网络或缓存加载。主线程可以在解析构建DOM的过程中找到它们后一一请求，但为了加快速度，“预加载扫描器(preload scanner)” 是并发运行的。如果HTML 文档中有类似`<img>`或 `<link>`，预加载扫描器会查看 HTML 解析器生成的 `token`，并将请求发送到浏览器进程中的网络线程。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208013600.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208013600.png"  />
 
 ##### JavaScript 可以阻止解析
 
@@ -255,7 +256,7 @@ DOM 是浏览器对页面的内部表示，也是开发人员可以通过 JavaSc
 
 主线程会解析 CSS 并确定每个 DOM 节点的计算样式。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208014052.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208014052.png"  />
 
 每个DOM节点都有一个默认样式，[这是默认样式表](https://source.chromium.org/chromium/chromium/src/+/master:third_party/blink/renderer/core/html/resources/html.css)。
 
@@ -265,7 +266,7 @@ DOM 是浏览器对页面的内部表示，也是开发人员可以通过 JavaSc
 
 布局是一个寻找元素几何形状的过程，主线程遍历 DOM 和计算样式并创建布局树，其中包含 xy 坐标和边界框大小等信息。布局树可能与 DOM 树的结构相似，但它只包含与页面上可见的内容相关的信息。如果 `display: none` 应用，则该元素不是布局树的一部分（但是，具有的 `visibility: hidden` 在布局树中）。类似地，如果应用了具有类似内容的伪类，`p::before{content:"Hi!"}` 即使它不在 DOM 中，它也会包含在布局树中。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208014514.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208014514.png"  />
 
 CSS代表了整个页面的初始布局，如果想多了解一点，[看下这个演讲吧!](https://www.youtube.com/watch?v=Y5Xa4H2wtVA)
 
@@ -273,11 +274,11 @@ CSS代表了整个页面的初始布局，如果想多了解一点，[看下这�
 
 到目前为止，有了DOM、样式和布局，但是想要开始绘制需要判断绘制的顺序。例如，`z-index `可能会为某些元素设置，在这种情况下，按照 HTML 中编写的元素的顺序绘制将导致不正确的渲染。
 
-<img src="https://developers.google.com/web/updates/images/inside-browser/part3/zindex.png" alt="zindex" style="zoom: 33%;" />
+<img src="https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16687905026611668790502435.png" alt="zindex" />
 
 在绘制步骤中，主线程遍历布局树以创建绘制记录。绘制记录的顺序是：先背景，后文字，再矩形。这个和 `<canvas>` 的绘制过程有点像。
 
-<img src="https://developers.google.com/web/updates/images/inside-browser/part3/paint.png" alt="paint" style="zoom: 67%;" />
+<img src="https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16687904566571668790456622.png" alt="paint" />
 
 ##### 注意
 
@@ -287,15 +288,15 @@ CSS代表了整个页面的初始布局，如果想多了解一点，[看下这�
 
 如果为元素设置动画，则浏览器必须在每一帧之间运行这些操作。我们的大多数显示器每秒刷新屏幕 60 次 (60 fps)；在每一帧在屏幕上移动物体时，动画对人眼来说会显得平滑。但是，如果动画错过了中间的帧，则页面将出现“janky”。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208015817.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208015817.png"  />
 
 即使渲染操作跟上屏幕刷新，这些计算也在主线程上运行，也就是说当应用程序运行 JavaScript 时，它可能会被阻止。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208015837.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208015837.png"  />
 
 这时候，可以将 JavaScript 操作分成小块，并使用 `requestAnimationFrame()` 来处理，也可以通过 `WebWorker` 运行JavaScript以避免阻塞主线程。有关JS执行优化，可以[点这里](https://developers.google.com/web/fundamentals/performance/rendering/optimize-javascript-execution)。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208015954.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208015954.png"  />
 
 ### 合成
 
@@ -305,19 +306,19 @@ CSS代表了整个页面的初始布局，如果想多了解一点，[看下这�
 
 Chrome第一次发布时，处理光栅化的方式是：只在视窗口内对部分页面进行光栅化，当用户滚动页面，就移动光栅的架子，并通过更多光栅来填充缺失的部分。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208020556.gif" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208020556.gif"  />
 
 然而，在现代浏览器运行着一个更复杂的过程，叫合成。
 
 合成，把页面的各个部分分成多个层，单独光栅化它们，并在合成器线程的单独线程中合并成一个页面。此时如果发生滚动，因为图层已经被光栅化，它所要做的就是合成一个新的框架。动画可以通过移动图层并合成新帧以相同的方式实现。查看页面的图层，可以从控制台的 `More tools --> layers` 打开。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208021208.gif" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208021208.gif"  />
 
 #### 分层
 
 为了找出哪些元素需要在哪些层中，主线程遍历布局树以创建层树（可以在 DevTools 的 Performance 面板中称为“Update Layer Tree”）。如果页面的某些部分应该是单独的层（如滑入式侧菜单）没有获取到，可以通过使用 `will-change` CSS 中的属性来提示浏览器。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208021808.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208021808.png"  />
 
 和每帧光栅化页面的小部分相比，为每个元素都提供层，并且合成会导致操作很慢。
 
@@ -325,7 +326,7 @@ Chrome第一次发布时，处理光栅化的方式是：只在视窗口内对�
 
 一旦创建了层树并确定了绘制顺序，主线程就会将该信息提交给合成器线程。合成器线程然后光栅化每一层。一个图层可能像页面的整个长度一样大，因此合成器线程将它们分成多个图块并将每个图块发送到光栅线程。光栅线程光栅化每个图块并将它们存储在 GPU 内存中。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208022001.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208022001.png"  />
 
 合成器线程可以对不同的光栅线程进行优先级排序，以便可以首先对视口内（或附近）的事物进行光栅化。一个图层也有多个不同分辨率的平铺来处理诸如放大操作之类的事情。
 
@@ -338,11 +339,11 @@ Chrome第一次发布时，处理光栅化的方式是：只在视窗口内对�
 
 然后通过 IPC 将合成器框架提交给浏览器进程。此时，可以从用于浏览器 UI 更改的 UI 线程或用于扩展的其他渲染器进程添加另一个合成器框架。这些合成器帧被发送到 GPU 以将其显示在屏幕上。如果出现滚动事件，合成器线程会创建另一个合成器帧以发送到 GPU。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208022144.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208022144.png"  />
 
 合成的好处是它是在不涉及主线程的情况下完成的。合成器线程不需要等待样式计算或 JavaScript 执行。这就是为什么 `只合成动画` 被认为是获得流畅性能的最佳选择。如果需要重新计算布局或绘制，则必须涉及主线程。
 
-## 用户输入和合成器
+## 四、用户输入和合成器
 
 ### 浏览器的input事件
 
@@ -352,14 +353,14 @@ Chrome第一次发布时，处理光栅化的方式是：只在视窗口内对�
 
 下图为Input事件通过浏览器进程路由到渲染器进程：
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208022545.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208022545.png"  />
 
 ### 非快速滚动区域
 
 如果没有input事件监听器附加到页面，合成器线程可以创建一个完全独立于主线程的新复合框架，如果某些事件侦听器附加到页面上，合成器线程如何确定事件是否需要处理？
 
 由于运行 JavaScript 是主线程的工作，因此在合成页面时，合成器线程会将页面中附加有事件处理程序的区域标记为“非快速可滚动区域”。通过获得这些信息，合成器线程可以确保在该区域发生事件时将input事件发送到主线程。如果input事件来自该区域之外，则合成器线程继续合成新帧，而无需等待主线程。
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208022919.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208022919.png"  />
 
 ### 事件委托
 
@@ -375,7 +376,7 @@ document.body.addEventListener('touchstart', event => {
 
 如果需要为所有元素编写一个事件处理程序的话，这种事件委托模式很有吸引力。但是，如果从浏览器的角度来看这段代码，现在整个页面都被标记为非快速可滚动区域。这意味着即使程序不关心来自页面某些部分的输入，合成器线程也必须与主线程通信并在每次输入事件进入时等待它。因此，**合成器的平滑滚动能力被打败了**。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208023136.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208023136.png"  />
 
 为了减少这种情况的发生，可以传递属性 `passive: true` ，这样会向浏览器暗示仍然希望在主线程中侦听事件，但合成器也可以继续合成新帧，比如：
 
@@ -416,7 +417,7 @@ document.body.addEventListener('pointermove', event => {
 
 当合成器线程向主线程发送输入事件时，首先要运行的是命中以找到事件目标。命中使用渲染过程中生成的绘制记录数据来找出发生事件的点坐标下方的内容。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208023549.png" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208023549.png"  />
 
 ### 最小化事件调度到主线程
 
@@ -424,11 +425,11 @@ document.body.addEventListener('pointermove', event => {
 
 如果像`touchmove `这样的连续事件每秒发送到主线程 120 次，那么与屏幕刷新的速度相比，它可能会触发过多的命中和 JavaScript 执行：
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208023809.png" style="zoom: 50%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208023809.png"  />
 
 为了尽量减少对主线程的过多调用，Chrome 会合并连续事件（例如 `wheel`, `mousewheel`, `mousemove`, `pointermove`, `touchmove`）并延迟调度直到下一个`requestAnimationFrame`，可以发现，时间线一样，但事件进行了合并和延迟。
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208023834.png" style="zoom: 50%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208023834.png"  />
 
 类似的事件，如`keydown`，`keyup`，`mouseup`，`mousedown`，`touchstart`，和`touchend` 被立即执行。
 
@@ -438,7 +439,7 @@ document.body.addEventListener('pointermove', event => {
 
 下图左侧是平滑的触摸手势路径，右侧是合并的有限路径：
 
-<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208024132.png" style="zoom: 67%;" />
+<img src="https://cdn.jsdelivr.net/gh/daodaolee/photobed@main/img/20211208024132.png"  />
 
 ```js
 window.addEventListener('pointermove', event => {

@@ -17,9 +17,9 @@ tags:
 
 
 
-流程是这样：选择支付方式，填入充值金额，跳转到“选择银行卡界面”，但是在跳转的过程中走了2次`get_card`请求。
+流程是这样：选择支付方式，填入充值金额，跳转到“选择银行卡界面”，但是在跳转的过程中走了2次 `get_card` 请求。
 
-由于模块是H5纯静态页面，肯定会遇到跨域的问题，之前是用`jsonp`解决的，但是现在需要给后端传一堆`headers` 头部信息，然后，jsonp就不行了，因为他的实质是src标签，然后用callback传的，而且只能传get，所以这次接口的改动，只能让后端配置CORS了，也就是`Allow-Control-Allow-Origin: *` 和`Allow-Control-Allow-Methods:GET,POST` 让后端配置这个就可以了，再保险点，把`*` 变成`访问地址` ，然后就出现了上面的情况，第一次的`Request Method:OPTION` ，而且没有发送请求头，第二次就是 正常的post了。
+由于模块是H5纯静态页面，肯定会遇到跨域的问题，之前是用 `jsonp` 解决的，但是现在需要给后端传一堆 `headers` 头部信息，然后，jsonp就不行了，因为他的实质是src标签，然后用callback传的，而且只能传get，所以这次接口的改动，只能让后端配置CORS了，也就是 `Allow-Control-Allow-Origin: *` 和 `Allow-Control-Allow-Methods:GET,POST` 让后端配置这个就可以了，再保险点，把 `*` 变成 `访问地址` ，然后就出现了上面的情况，第一次的 `Request Method:OPTION` ，而且没有发送请求头，第二次就是正常的post了。
 
 出现第一次的原因是探测请求，客户端可以在采取具体资源请求之前，决定对该资源采取何种必要措施，或者了解服务器的性能。
 

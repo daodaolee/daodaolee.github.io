@@ -1,14 +1,13 @@
 ---
 title: vscode 全局和插件配置
 date: 2022-03-19
-categories:
- - 工具
 tags:
- - 工具
+ - tool
 ---
 [[toc]]
 
-整理了一套自己的 setting.json 和 extension，有需要的可以自取~
+整理了一套自己 vscode 的 setting 和 extension，有需要的可以自取。
+## setting
 
 ```json
 // setting.json
@@ -159,22 +158,22 @@ tags:
   }
 }
 ```
+## extension
 
 ```json
 // extension
-Jun Han.Auto Rename Tag
-Christian Kohler.Path Intellisense
-Alessandro Fragnani.Project Manager
 Anthony Fu.Browse Lite
 Anthony Fu.Carbon Product Icons
-Equinusocio.Community Material Theme
+Anthony.Iconify IntelliSense
+Anthony.Smart Clicks
+Anthony.UnoCss
+Anthony.Vitesse Theme
+Anthony.Where Am I?
+Microspft.Docker
+Alexander.Error lens
+JonathanHarty.Gruvbox Material Icon Theme
 Microsoft.ESLint
-Microsoft.TSLint
 Pine Wu.Vetur
-Anthony Fu.Vite
 Johnson Chu.Volar
-file-icons.file-icons
 GitKraken.GitLens
-Yiyi Wang.Markdown Preview Enhanced
-WakaTime.WakaTime
 ```

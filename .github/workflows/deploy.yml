@@ -32,6 +32,10 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: CNAME
+        run: cd docs/.vuepress/dist
+        run: echo 'daodaolee.cn' > CNAME
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:

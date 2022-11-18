@@ -1,16 +1,14 @@
 ---
-title: 重学JavaScript【函数的进阶】
+title: 重学JS【函数的进阶】
 date: 2021-02-23 00:33:41
-categories:
- - 前端
 tags:
- - JS
+ - js
 ---
 [[toc]]
 
-本篇主要收一下函数的内部对象，只有更好的了解函数的内部结构，才可以更好的封装方法。
+本篇主要复习一下函数的内部对象，只有更好的了解函数的内部结构，才可以更好的封装方法。
 
-# arguments
+## arguments
 
 `arguments` 表示一个函数传入的参数，不管有没有传参，arguments 都存在。
 
@@ -78,7 +76,7 @@ console.log(factorial(5)); // 0
 
 callee 英文是被叫者的意思，也可以理解为被叫者就是所在的函数。
 
-# caller
+## caller
 
 `caller` 是呼叫者的意思，指向函数被调用者：
 
@@ -100,7 +98,7 @@ funciton gn(){
 }
 ```
 
-# new.target
+## new.target
 
 ECMAScript6定义了 new.target 属性，用于检测函数是否是用 new关键字 调用的，如果不是就返回undefined，如果是就引用被调用的构造函数：
 
@@ -117,7 +115,7 @@ fn(); // 没使用new
 ```
 
 
-# call
+## call
 
 `call` 可以改变函数体内 this 的指向：
 
@@ -260,7 +258,7 @@ Function.prototype.myCall = function(context){
 }
 ```
 
-# apply
+## apply
 
 `apply` 也可以改变函数体内 this 的指向，和 call 用法一样，主不过第二个参数是数组或类数组：
 
@@ -300,7 +298,7 @@ Function.prototype.myApply = function (context, arr) {
 
 和call的区别就是一个是用arguments，一个使用传入的arr数组。
 
-# bind
+## bind
 
 > bind 会创建一个新的函数，在bind被调用的时候，这个新函数的 this 就被指定为 bind 的第一个参数，其余参数将作为新函数的参数传入，供调用时使用。
 

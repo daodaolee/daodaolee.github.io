@@ -22,13 +22,13 @@
       "vite-plugin-pwa/client"
     ],
     "paths": {
-      "vitepress-theme-minimalist": [
-        "src/index.ts"
-      ],
-      "vitepress-theme-minimalist/config": [
+      "minimalist/config": [
         "src/vitepress/config/baseConfig.js"
       ],
-      "vitepress-theme-minimalist/*": [
+      "minimalist": [
+        "src/index.ts"
+      ],
+      "minimalist/*": [
         "src/*"
       ]
     }

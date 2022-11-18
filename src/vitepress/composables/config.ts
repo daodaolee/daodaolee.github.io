@@ -1,8 +1,4 @@
-import type {
-  Component,
-  InjectionKey,
-  Ref,
-} from 'vue'
+import type { Component } from 'vue'
 import {
   computed,
   defineComponent,
@@ -11,16 +7,8 @@ import {
   provide,
 } from 'vue'
 import { useData } from 'vitepress'
-import type {
-  Config,
-  MultiSidebarConfig,
-  SidebarConfig,
-  SidebarGroup,
-} from '../config'
-import type { MenuItem, MenuItemChild } from '../../core'
-import { normalizeLink } from '../support/utils'
 
-const configSymbol: InjectionKey<Ref<Config>> = Symbol('config')
+const configSymbol = Symbol('config')
 
 /**
  * Wrap root App component to provide the resolved theme config
@@ -45,41 +33,11 @@ export function useConfig() {
   }
 }
 
-function resolveConfig(config: Config): Config {
+function resolveConfig(config: any) {
   return Object.assign(
     {
-      appearance: true,
+      appearance: false,
     },
-    config,
-    {
-      // @ts-expect-error ignore normalizeMenuItem
-      nav: config.nav?.map(normalizeMenuItem),
-      sidebar: config.sidebar && normalizeSideBar(config.sidebar),
-    },
+    config
   )
-}
-
-function normalizeMenuItem<T extends MenuItem | MenuItemChild>(item: T): T {
-  if ('link' in item) {
-    return Object.assign({}, item, {
-      link: normalizeLink(item.link),
-    })
-  }
-  else {
-    return Object.assign({}, item, { items: item.items.map(normalizeMenuItem) })
-  }
-}
-
-function normalizeSideBar(sidebar: SidebarConfig): SidebarConfig {
-  if (Array.isArray(sidebar)) {
-    return sidebar.map(normalizeMenuItem)
-  }
-  else {
-    const ret: MultiSidebarConfig = {}
-
-    for (const key in sidebar)
-      ret[key] = normalizeSideBar(sidebar[key]) as SidebarGroup[]
-
-    return ret
-  }
 }

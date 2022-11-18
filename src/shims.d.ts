@@ -6,10 +6,9 @@ declare module '*.vue' {
   export default comp
 }
 
-declare module 'vitepress-theme-minimalist/config' {
+declare module 'minimalist/config' {
   export default any
 }
-
 declare module '@docsearch/js' {
   function docsearch<T = any>(props: T): void
   export default docsearch

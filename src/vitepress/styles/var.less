@@ -4,6 +4,7 @@ html {
   --c-black: #000000;
   --c-page-color: #444444;
   --c-color-deep: #222222;
+  --c-color-divide: #dddddd;
   --pre-bg-color: #f8f8f8;
 
   --pre-strong-color: #333333;
@@ -64,5 +65,31 @@ html {
     --un-gradient-shape: to right;
     --un-gradient: var(--un-gradient-shape), var(--un-gradient-stops);
     background-image: linear-gradient(var(--un-gradient));
+  }
+
+  /* scrollbar */
+  * {
+    scrollbar-color: #ccc;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar:horizontal {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--c-bg);
+    border-radius: 10px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    // background: var(--c-divider-light);
+    background: var(--c-color-divide);
+    border-radius: 10px;
   }
 }

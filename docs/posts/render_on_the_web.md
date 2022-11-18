@@ -1,11 +1,9 @@
 ---
 title: Web渲染的权衡
 date: 2021-12-13 17:08:08
-categories:
- - 前端
 tags:
- - 浏览器
- - 性能优化
+ - chrome
+ - performance
 ---
 [[toc]]
 构建网站的方法有很多，但是每种构建都离不开渲染，那如何从性能的角度来权衡Web上的渲染呢？

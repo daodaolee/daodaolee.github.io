@@ -4,7 +4,8 @@ import { useData } from 'vitepress'
 const { site } = useData()
 const msgs = [
   '你！在！干！什！么！',
-  'This is the altar, go back quickly!',
+  'This is the altar, go back?',
+  'It seems that your choice is wrong',
   '看起来...不太妙...',
 ]
 function getMsg() {
@@ -13,8 +14,8 @@ function getMsg() {
 </script>
 
 <template>
-  <div class="theme">
-    <h1 class="op-70">
+  <div>
+    <h1>
       404
     </h1>
     <blockquote>{{ getMsg() }}</blockquote>

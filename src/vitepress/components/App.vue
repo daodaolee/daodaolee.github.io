@@ -3,7 +3,6 @@ import { computed, defineAsyncComponent } from 'vue'
 import { useData, useRoute } from 'vitepress'
 const route = useRoute()
 
-console.log(route)
 const { frontmatter } = useData()
 
 const Home = defineAsyncComponent(() => import('./Home.vue'))
@@ -26,6 +25,9 @@ const enableMovie = computed(() => !!(route.path === '/movies/'))
       <Movie v-else-if="enableMovie" class="px-6 md:px-0" />
       <Page v-else />
     </div>
+  </div>
+  <div class="text-center text-0.1rem pt-10 pb-2 op-20 scale-80" style="letter-spacing: 0.2rem;">
+    <a href="https://beian.miit.gov.cn/">浙ICP备2022027583号-1</a>
   </div>
 </template>
 

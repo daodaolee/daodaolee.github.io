@@ -1,5 +1,5 @@
 {
-  "name": "vitepress-theme-minimalist",
+  "name": "minimalist-blog",
   "version": "1.0.0",
   "packageManager": "pnpm@7.16.0",
   "description": "a minimalist vitepress theme",
@@ -10,14 +10,12 @@
   },
   "license": "MIT",
   "keywords": [
-    "vitepress",
-    "theme"
+    "vitepress"
   ],
  
   "exports": {
     ".": "./src/index.ts",
     "./config": "./src/vitepress/config/baseConfig.js",
-    "./types": "./src/types/index.ts",
     "./src/*": "./src/*"
   },
   "main": "./src/index.ts",
@@ -46,6 +44,9 @@
     "@iconify-json/ri": "^1.1.3",
     "@types/node": "^18.11.9",
     "eslint": "^8.27.0",
+    "fs-extra": "10.1.0",
+    "globby": "11.1.0",
+    "gray-matter": "4.0.3",
     "typescript": "^4.8.4",
     "vite": "^3.2.3",
     "vitepress": "1.0.0-alpha.29",

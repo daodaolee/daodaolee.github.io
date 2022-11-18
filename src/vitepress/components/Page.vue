@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import { computed, defineAsyncComponent } from 'vue'
 import { useData } from 'vitepress'
 import { utcToString } from '../tools'
 
@@ -11,7 +10,7 @@ const { date, tags } = frontmatter
 <template>
   <main class="content max-w-73ch mx-auto px-6 md:px-0 pb-15">
     <div class="pt-25">
-      <div class="pb-5">
+      <div class="mb-8">
         <h1 class="title mt-0 text-2.2rem mb-5">
           {{ frontmatter.title }}
         </h1>

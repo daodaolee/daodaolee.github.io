@@ -1,11 +1,9 @@
 ---
 title: Webpack 核心流程
 date: 2022-03-23
-categories:
- - 前端
 tags:
- - Webpack
- - JS
+ - webpack
+ - js
 ---
 [[toc]]
 *[原文地址](https://segmentfault.com/a/1190000039956437)*

@@ -1,13 +1,11 @@
 ---
-title: 一文讲解浏览器运行渲染机制、JS任务队列及事件循环
+title: 浏览器渲染机制、JS任务队列及事件循环
 date: 2021-01-31 17:24:18
-categories:
- - 前端
 tags:
- - EventLoop
- - JS
+ - chrome
+ - js
 ---
-
+[[toc]]
 你是不是有过以下困难：
 
 * 多个方法互相嵌套，但是最终还是蒙对了
@@ -138,7 +136,7 @@ tags:
 
    ![主线程解析CSS以添加计算样式](https://i.loli.net/2021/01/31/CYHbptVyWI3TwmS.png)
 
-5. 接下来CSS根据DOM节点，会生成类似于DOM结构的一个布局树，仅包含了页面上可见内容的信息，如果有 `display: none` 等，则该元素不属于布局树。如果有`p::before {content:"123"}` 等伪类的存在，就算它不在DOM中，也会包含在布局树中。
+5. 接下来CSS根据DOM节点，会生成类似于DOM结构的一个布局树，仅包含了页面上可见内容的信息，如果有 `display: none` 等，则该元素不属于布局树。如果有`p::before {content: "123"}` 等伪类的存在，就算它不在DOM中，也会包含在布局树中。
 
    ![主线程遍历具有计算样式的DOM树并生成布局树](https://i.loli.net/2021/01/31/NwxgPsyOqojVh2p.png)
 
@@ -210,7 +208,7 @@ tags:
 
 
 
-## 微任务(MicroTask)和宏任务(MacroTask)
+## 微任务、宏任务
 
 这段参考[Tasks, microtasks, queues and schedules](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/)，一位谷歌开发者人员用实例讲述了任务执行顺序，并带有在线Demo，强烈建议过一遍(英语不好就逐句翻译)。
 

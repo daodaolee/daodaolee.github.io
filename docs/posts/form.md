@@ -1,11 +1,8 @@
 ---
 title: form表单提交的submit和ajax区别
 date: 2019-01-23 21:05:22
-categories:
- - 前端
 tags:
  - form
- - ajax
 ---
 [[toc]]
 

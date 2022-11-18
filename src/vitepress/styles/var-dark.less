@@ -3,7 +3,7 @@ html.dark {
   --c-bg: #111111;
   --c-white: #ffffff;
   --c-page-color: #bcbcbc;
-  // --c-color-deep: #fff;
+  --c-color-divide: #4a4c5055;
   --pre-bg-color: #151515;
   --pre-strong-color: #eeeeee;
   --pre-line-color: #7d7d7d4d;
@@ -54,5 +54,31 @@ html.dark {
   .dark\:hover\:text-gray-900:hover {
     --un-text-opacity: 1;
     color: rgba(17, 24, 39, var(--un-text-opacity));
+  }
+
+  /* scrollbar */
+  * {
+    scrollbar-color: #ccc;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar:horizontal {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--c-bg);
+    border-radius: 10px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    // background: var(--c-divider-light);
+    background: var(--c-color-divide);
+    border-radius: 10px;
   }
 }

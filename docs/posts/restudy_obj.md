@@ -1,16 +1,14 @@
 ---
-title: 重学JavaScript【对象的结构，创建和继承关系】
+title: 重学JS【对象的结构，创建和继承关系】
 date: 2021-02-22 01:15:25
-categories:
- - 前端
 tags:
- - JS
+ - js
 ---
 [[toc]]
 
-提到对象肯定都不陌生。但是你真的掌握对象么？本篇就来全面性的说下对象的结构，创建和继承关系
+提到对象肯定都不陌生。但是你真的掌握对象么？本篇就来全面性的说下对象的结构，创建和继承关系。
 
-# 理解对象
+## 理解对象
 
 一般来说，创建一个对象通常是创建Object实例，然后再给它添加属性和方法：
 
@@ -33,13 +31,13 @@ let obj = {
 }
 ```
 
-## 属性的类型
+### 属性的类型
 
 属性的类型定义规范中说明，类型是用两个中括号把特性的名称括起来的，比如：[[Enumerable]]。
 
 属性分为两种：**数据属性** 和 **访问器属性**
 
-### 数据属性
+#### 数据属性
 
 
    数据属性包含了一个保存数据值的位置，数据属性有四个特性来说明这个位置的值：
@@ -60,12 +58,12 @@ let obj = {
 
      表示属性的值，默认为undefined
 
-    举个例子:
+举个例子:
 
-   ```js
-   let obj = {
-     name: "abc"
-   }
+```js
+let obj = {
+  name: "abc"
+}
    ```
 
    上面obj的 [[value]] 就是abc，[[Configurable]]、[[Enumerable]]、[[Writable]]都是true，如果想改变这三个属性，就必须使用 `Object.defineProperty()` 方法，该方法接收三个参数，要改变的对象，属性名称和一个描述符对象：
@@ -95,7 +93,7 @@ let obj = {
    obj.name;  // "abc"
    ```
 
-   配置了 configurable 为 false 之后，name属性就删不掉了。**此外一个属性被定义为不可配置后，就不能再变回可配置了！**如果再次调用 Object.defineProperty() 来修改任何非 writable 属性就会报错！
+   配置了 configurable 为 false 之后，name属性就删不掉了。**此外一个属性被定义为不可配置后，就不能再变回可配置了！** 如果再次调用 Object.defineProperty() 来修改任何非 writable 属性就会报错！
 
    ```js
    Object.defineProperty(obj, "name", {
@@ -112,7 +110,7 @@ let obj = {
 
    > 在调用 Object.defineProperty() 时，configurable、enumerable 和 writable 的值如果不指定，则都默认为 false。多数情况下，可能都不需要 Object.defineProperty()提供的这些强大的设置，但要理解 JavaScript 对象，就要理解这些概念。
 
-### 访问器属性
+#### 访问器属性
 
 访问器属性不包含数据值，它包含一个 **getter(获取)** 和 **setter(设置)** 函数，在读取访问器属性时，会调用这两个函数，一个是读取值，一个是设置新值。访问器也有四个特性：
 
@@ -153,7 +151,7 @@ obj.name; // xyz
 
 那知道了对象里的属性可以设置之后，如何知道当前对象里的这些属性是什么值呢？
 
-## 读取属性的特性
+### 读取属性的特性
 
 可以使用 `Object.getOwnPropertyDescriptor()` 方法来获取指定属性的值，会返回一个对象：
 
@@ -209,7 +207,7 @@ let desc = Object.getOwnPropertyDescriptor(obj, "name");
 */
 ```
 
-## 合并对象
+### 合并对象
 
 在ECMAScript6中，添加了 `Object.assign()` 方法，可以把两个对象合并成一个，它接收一个目标对象和一个或多个源对象作为参数，它的过程如下：
 
@@ -230,7 +228,7 @@ console.log(result === dest) // true
 
 **Object.assign 修改了目标对象！而且有多个源对象的情况下并且有相同的键，后面会覆盖前面的！Object.assign 其实就是对每个源对象进行了浅复制！**
 
-## 相等判定
+### 相等判定
 
 在ECMAScript6新增了 `Object.is()` 方法，判断两个值是否为同一个值，如果满足下列条件就相等：
 
@@ -249,7 +247,7 @@ console.log(result === dest) // true
 
 ![](https://i.imgur.com/pCyqkLc.png)
 
-## 优化
+### 优化
 
 ECMAScript6为定义和操作对象做了很多优化，以下是常用的三点：
 
@@ -314,7 +312,7 @@ ECMAScript6为定义和操作对象做了很多优化，以下是常用的三点
    }
    ```
 
-   ## 对象解构
+### 对象解构
 
 简单说就是可以把对象里的内容单独拿出来使用，如果没有就是undefined，但是可以赋默认值使用：
 
@@ -332,7 +330,7 @@ sex // male
 
 也有一些特殊的解构，比如嵌套解构和部分解构。
 
-### 嵌套结构
+#### 嵌套结构
 
 ```js
 let person = { 
@@ -350,7 +348,7 @@ let personCopy = {};
 } = person);
 ```
 
-因为一个对象的引用被赋值给 personCopy，所以修改 person.job 对象的属性也会影响 personCopy 
+因为一个对象的引用被赋值给 personCopy，所以修改 person.job 对象的属性也会影响 personCopy：
 
 ```js
 person.job.title = 'Hacker' 
@@ -360,7 +358,7 @@ console.log(personCopy);
 // { name: 'Matt', age: 27, job: { title: 'Hacker' } }
 ```
 
-嵌套结构可以读取多层内部的属性
+嵌套结构可以读取多层内部的属性：
 
 ```js
 let person = { 
@@ -375,7 +373,7 @@ let { job: { title } } = person;
 console.log(title); // Software engineer
 ```
 
-### 部分解构
+#### 部分解构
 
 如果一个解构涉及了多个赋值，开始的赋值成功，后面的赋值出错，那么整个解构会完成一部分：
 
@@ -393,11 +391,11 @@ console.log(personName, personBar, personAge);
 // Matt, undefined, undefined
 ```
 
-# 创建对象
+## 创建对象
 
 从上面的代码可以看出来，对象创建的方式有：**Object构造函数** 和 对象字面量，但是这两个有个很明显的不足：创建具有同样接口的多个对象需要很多重复代码。为了解决这一点，创建对象较好的方式有三种：**工厂模式** 、 **构造函数模式** 和 **原型模式**。
 
-## 工厂模式
+### 工厂模式
 
 工厂模式属于一种设计模式，体现在很多语言里，在JavaScript中，利用工厂模式创建可以这样：
 
@@ -414,7 +412,7 @@ let obj1 = createObj("abc", 20, "male");
 
 通过一个工厂函数内部构建，传入需要的值就可以创建出来。
 
-## 构造函数模式
+### 构造函数模式
 
 除了原生的构造函数之外，我们可以自定义构造函数，比如：
 
@@ -468,7 +466,7 @@ obj1 instanceof CreateObj; // true
 
    但是这样又会有一个新的问题，如果有很多个方法呢，都要定义在外部么？原型模式就是解决这个问题的。
 
-## 原型模式
+### 原型模式
 
    先简单来说一下关键点：每个函数都会创建一个 prototype 属性，这个属性是一个对象，包含了实例共享的属性和方法，也就是说 prototype 就是调用构造函数创建出来的对象。好处是在原型对象定义的属性和方法可以被实例共享。这样的话，在上面的构造函数模式里，赋值给实例的值，可以直接赋值到原型行上，上面的代码用原型模式是这样的：
 
@@ -484,9 +482,9 @@ obj1 instanceof CreateObj; // true
    obj1.say == obj2.say; // true
    ```
 
-   为什么obj1和obj2 **共享 **原型上的方法和属性呢？
+   为什么obj1和obj2 **共享** 原型上的方法和属性呢？
 
-   ### 什么是原型
+   #### 什么是原型
 
    一个函数被创建，它就会创建一个指向原型对象的 **prototype** 属性，而所有原型对象都有一个叫做 **constructor** 的属性，constructor会指回构造函数。
 
@@ -494,7 +492,7 @@ obj1 instanceof CreateObj; // true
 
    **重点来了！**
 
-   在自定义构造函数时(CreateObj)，原型对象默认只会获得 constructor 属性，其他所有方法都继承于Object。每次调用构造函数创建一个新的实例，实例的内部 [[prototype]] 就会被赋值为构造函数(CreateObj)的原型对象。实际情况下在对象上暴露的是` __proto__ `。
+   在自定义构造函数时(CreateObj)，原型对象默认只会获得 constructor 属性，其他所有方法都继承于Object。每次调用构造函数创建一个新的实例，实例的内部 [[prototype]] 就会被赋值为构造函数(CreateObj)的原型对象。实际情况下在对象上暴露的是 `__proto__ `。
 
    我们再来捋一遍原型干了什么事情：
 
@@ -536,7 +534,7 @@ obj1 instanceof CreateObj; // true
    Object.getPrototypeOf(obj1) === CreateObj.prototype; // true
    ```
 
-### 原型的层级关系
+#### 原型的层级关系
 
 ```js
 let CreateObj = function(){};
@@ -618,7 +616,7 @@ Object.getOwnPropertyNames(CreateObj.prototype);
 // [constructor, name, age, sex]
 ```
 
-### 原型的特殊语法
+#### 原型的特殊语法
 
 从上面的许多例子可以看到，每次添加一个属性或者方法，都得用 `构造函数.prototype` 的方式重写一次，很麻烦，所以有更好的写法推荐：
 
@@ -661,9 +659,9 @@ Object.defineProperty(CreateObj.prototype, "constructor", {
 
 
 
-# 继承
+## 继承
 
-## 原型链
+### 原型链
 
 通过原型模式，我们知道了构造函数、原型和实例的关系：构造函数(CreateObj) 有一个原型(CreateObj.prototype)，原型有一个constructor属性指回构造函数(CreateObj)，实例(obj1)有一个内部指针指向原型：
 
@@ -702,11 +700,11 @@ CreateObj.prototype.constructor == OtherObj;
 
 还有另一个缺点就是，子类型实例化时不能给父类型的构造函数传参数，也就是说 obj1 不能传参给 OtherObj传递参数。
 
-## 对象伪装
+### 对象伪装
 
 前面说了一大堆，其实 CreateObj 是自己，OtherObj也是自己，它们只是有一个原型链关系绑定而已，如果在 CreateObj 里面，把它的 this 指向 OtherObj，那么……对！CreateObj 就可以使用 OtherObj 里面的东西了！
 
-### 经典继承
+#### 经典继承
 
 ```js
 function OtherObj(name){
@@ -723,7 +721,7 @@ obj1.name // "abc"
 
 当然解决了引用的问题之后，新的问题来了：OtherObj 里要创建好多方法，而且只能在 OtherObj 中定义方法。
 
-### 组合继承
+#### 组合继承
 
 ```js
 function OtherObj(name){
@@ -752,7 +750,7 @@ obj1.sayAge(); // 20
 
 综合了原型链和经典继承，使用原型链继承原型上的属性和方法，改变this指向继承实例属性，这样每个实例就都有自己的属性并且共享相同的方法了。
 
-### 寄生组合继承
+#### 寄生组合继承
 
 ```js
 function OtherObj(name){

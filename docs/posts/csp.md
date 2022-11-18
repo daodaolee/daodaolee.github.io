@@ -1,17 +1,16 @@
 ---
 title: 资源加载一丈红?罪魁祸首竟然是CSP!
 date: 2021-02-19 19:43:58
-categories:
- - 前端
 tags:
  - http
  - csp
 ---
 [[toc]]
 
+## 前言
 今天把做好的项目打包放测试环境上之后，发现页面资源全部加载不出来，好久没看见满满的一丈红了！
 
-<img src="https://i.loli.net/2021/02/19/AnLeYjT4z7V2gPJ.png" style="zoom: 35%;" />
+<img src="https://i.loli.net/2021/02/19/AnLeYjT4z7V2gPJ.png"  />
 
 不慌，有问题不要紧，挨个排查解决就好了，既然报错不是404，说明资源是可以加载的，也就是说不是项目打包路径的错。报错 `net::ERR_SSL_PROTOCOL_ERROR` ，很明显是个 `SSL` 的问题导致资源无法加载，于是问了一下运维发现测试环境没有配置SSL，怪不得会报错！于是欣慰的让运维加一个 `SSL` ，问题不就解决了么？完美~
 
@@ -35,11 +34,11 @@ server {
 
 之前的项目都是这样配置的而且也没有什么特殊情况，为什么现在单独它出错了？把root地址换成之前的项目，也能加载出来，nginx重启之后，问题仍然遗留，那很大可能性在代码上了，既然页面可以加载出来index.html，那source一定有index这个文件！此时没有资源加载很正常，可以理解。
 
-<img src="https://i.loli.net/2021/02/19/V1aSNhf5oTQIUxr.png" style="zoom:50%;" />
+<img src="https://i.loli.net/2021/02/19/V1aSNhf5oTQIUxr.png" />
 
 那就看看index里面会不会有什么猫腻？
 
-<img src="https://i.loli.net/2021/02/19/e3MJlmwVtDTpOuN.png" style="zoom:50%;" />
+<img src="https://i.loli.net/2021/02/19/e3MJlmwVtDTpOuN.png"/>
 
 有一个之前没用过的 `meta` 标签，会不会是它引起的呢？把它注释之后打包，what？ 打包后的index里还有它！而且是没有注释的！暴力一点，删掉总不会有了吧，接着打包、部署，果然！页面资源加载成功了！
 
@@ -47,19 +46,19 @@ server {
 
 查了半天资料发现事情其实并不简单(正文开始)！
 
-# CSP是什么
+## CSP是什么
 
 我们都知道，浏览器是有同源策略的，每个站点只允许加载来自自身域的数据，**a.cn** 是无法从 **b.cn** 获取数据的，这样网络就不会杂乱无章了，而且它也保证了网站的安全性(如果做数据共享，请学习：跨资源共享CORS)。
 
 然而在实际情况下，同源策略不会百分之百阻挡 XSS 等攻击，理论上讲只要有注入(比如a标签的href，script标签的引入，img的src等，就可能会受到攻击)，而 `Content-Security-Policy(CSP)` 从另一面给浏览器加了层防护，可以极大的减少这种攻击行为的发生。
 
-# 原理和使用
+## 原理和使用
 
 `CSP` 是通过高速浏览器一系列规则，严格规定了页面中哪些范围内的资源可访问，而不在这个范围内的资源统统不能访问。
 
 使用CSP的方法有两种：
 
-1. 在服务器上添加 `Content-Security-Policy` 响应头来指定规则
+1. 在服务器上添加 `Content-Security-Policy` 响应头来指定规则：
 
    ```java
    Content-Security-Policy: default-src 'self' http://example.com;
@@ -68,12 +67,12 @@ server {
                            script-src http://example.com/
    ```
 
-2. HTML中添加 `<meta>` 标签来指定域规则
+2. HTML中添加 `<meta>` 标签来指定域规则：
 
    ```html
    <meta 
-          http-equiv="Content-Security-Policy" 
-          content="default-src 'self';default-src 'unsafe-inline';"
+      http-equiv="Content-Security-Policy" 
+      content="default-src 'self';default-src 'unsafe-inline';"
    >
    ```
 
@@ -120,6 +119,7 @@ server {
 
 > CSP 的配置是很灵活的。每条指令可指定多个来源，空格分开。而一条 CSP 规则可由多条指令组成，指令间用分号隔开。各指令间没有顺序的要求，因为每条指令都是各司其职。甚至一次响应中， **Content-Security-Policy** 响应头都可以重复设置。
 
+## 结尾
 所以，在项目里面配置了如下代码，而服务器没有配置https，就会报错:
 
 ```html
