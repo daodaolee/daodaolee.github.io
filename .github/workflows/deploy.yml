@@ -31,6 +31,7 @@ jobs:
 
       - name: Build
         run: npm run build
+      - run: cp ./CNAME ./docs/.vitepress/dist/CNAME
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
@@ -38,7 +39,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/.vitepress/dist
           force_orphan: true
-           cname: daodaolee.cn
 
       #   with:
       #     node-version: 18
