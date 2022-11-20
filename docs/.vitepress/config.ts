@@ -4,7 +4,8 @@ import { getPosts } from './theme/serverUtils'
 async function config() {
   return {
     extends: baseConfig,
-    title: 'Minimalist',
+    title: 'DaoDaoLee',
+    titleTemplate: false,
     appearance: false,
     markdown: {
       theme: {
@@ -23,6 +24,10 @@ async function config() {
       movies: [{
         date: '2022',
         movie: [{
+          title: '天鹅挽歌',
+          photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16689602727211668960272691.png',
+          link: 'https://movie.douban.com/subject/35258381/'
+        }, {
           title: '军舰岛',
           photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16687854268751668785426018.png',
           link: 'https://movie.douban.com/subject/21324900/'
