@@ -4,9 +4,9 @@ import { useData } from 'vitepress'
 const { theme } = useData()
 const movies = theme.value.movies
 
-const toDouban = (link: string) => {
-  window.open(link)
-}
+// const toDouban = (link: string) => {
+//   window.open(link)
+// }
 </script>
 
 <template>
@@ -16,16 +16,17 @@ const toDouban = (link: string) => {
         v-for="(movie, index) in movies" 
         :key="index" 
         class="flex flex-wrap pt-20 relative"
-        @click="toDouban(movie.link)"
       >
         <div v-if="movie.date" absolute top-0 h20 pointer-events-none>
           <span text-8em op10 absolute left--3rem top--2rem font-bold>{{ movie.date }}</span>
         </div>
         <div v-for="m in movie.movie" :key="m.title" class=" movie-item cursor-pointer w-35 mb-10 text-center">
-          <img class="w-100% h-50 border-rd" :src="m.photo" :alt="movie.title">
-          <p class="mt-0 mb-0  text-0.9rem op-70 hover:op-100 transition-colors-400">
-            {{ m.title }}
-          </p>
+          <a :href="m.link" target="_blank">
+            <img class="w-100% h-50 border-rd" :src="m.photo" :alt="movie.title">
+            <p class="mt-0 mb-0  text-0.9rem op-70 hover:op-100 transition-colors-400">
+              {{ m.title }}
+            </p>
+          </a>
         </div>
       </div>
     </div>
