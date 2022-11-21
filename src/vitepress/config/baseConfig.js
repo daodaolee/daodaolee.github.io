@@ -23,7 +23,7 @@ module.exports = async () => ({
       'link',
       {
         rel: 'icon',
-        href: '/favicon.svg',
+        href: '/favicon.ico',
       },
     ]
   ]

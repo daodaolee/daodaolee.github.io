@@ -16,8 +16,8 @@ async function config() {
     // base: '/vitepress-theme-minimalist',
     base: '/',
     themeConfig: {
-      logoDark: '/logo-black.svg',
-      logo: '/logo-light.svg',
+      logoDark: '/logo-white.webp',
+      logo: '/logo-black.webp',
       // all posts
       posts: await getPosts(),
       // movies
