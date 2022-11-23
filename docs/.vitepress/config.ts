@@ -25,7 +25,7 @@ async function config() {
         date: '2022',
         movie: [{
           title: '海边的曼彻斯特',
-          photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16689602727211668960272691.png',
+          photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16692109183201669210917777.png',
           link: 'https://movie.douban.com/subject/25980443/'
         }, {
           title: '天鹅挽歌',
