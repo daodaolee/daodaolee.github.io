@@ -24,6 +24,10 @@ async function config() {
       movies: [{
         date: '2022',
         movie: [{
+          title: 'K歌情人',
+          photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16707655427961670765542212.png',
+          link: 'https://movie.douban.com/subject/1937401/'
+        }, {
           title: '海边的曼彻斯特',
           photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16692109183201669210917777.png',
           link: 'https://movie.douban.com/subject/25980443/'
