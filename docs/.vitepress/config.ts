@@ -24,6 +24,18 @@ async function config() {
       movies: [{
         date: '2022',
         movie: [{
+          title: '绣春刀II：修罗战场',
+          photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16716358595671671635858957.png',
+          link: 'https://movie.douban.com/subject/26270502/'
+        }, {
+          title: '绣春刀',
+          photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16716358175701671635816648.png',
+          link: 'https://movie.douban.com/subject/24745500/'
+        }, {
+          title: '一八九四·甲午大海战',
+          photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16716357515731671635750723.png',
+          link: 'https://movie.douban.com/subject/6080772/'
+        }, {
           title: 'K歌情人',
           photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16707655427961670765542212.png',
           link: 'https://movie.douban.com/subject/1937401/'
@@ -119,7 +131,7 @@ async function config() {
           title: '白日梦想家',
           photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16687857518731668785751116.png',
           link: 'https://movie.douban.com/subject/2133323/'
-        }] 
+        }]
       }]
     }
   }
