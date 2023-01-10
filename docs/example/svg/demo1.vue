@@ -1,9 +1,3 @@
-<script>
-export default {
-  name: 'SvgDemo'
-}
-</script>
-
 <template>
   <svg 
     version="1.1"
