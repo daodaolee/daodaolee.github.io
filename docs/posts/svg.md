@@ -91,6 +91,8 @@ Content-Encoding: gzip
 
 
 ### 基本形状
+SVG 有 6 种基本形状：`矩形（rect）`、`圆形（circle）`、`椭圆形（ellipse）`、`线条（line）`、`折线（polyline）`、`多边形（polygon）`。
+
 
 ### 路径
 
