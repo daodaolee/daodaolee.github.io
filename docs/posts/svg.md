@@ -566,16 +566,365 @@ SVG 有 6 种基本形状：`矩形（rect）`、`圆形（circle）`、`椭圆�
 ```
 
 ### 渐变
+SVG 可以做到 **线性渐变** 和 **径向渐变**，不过你得用一个 `id` 属性让它去识别，得用一个 `<defs>` 标签来包裹渐变的内容，得用一个 `<linearGradient>` 标签来包裹线性的渐变方式，得用一个 `<radialGradient>` 标签来包裹径向的渐变方式。
+#### 线性渐变
+<div text-center>
+<svg width="350" height="120">
+  <defs>
+    <linearGradient id="Gradient1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="violet"/>
+      <stop offset="40%" stop-color="orange" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="green"/>
+    </linearGradient>
+    <linearGradient id="Gradient2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="cyan"/>
+      <stop offset="100%" stop-color="pink"/>
+    </linearGradient>
+  </defs>
+  <rect 
+    x="0" y="10" rx="15" ry="15" width="100" height="100" 
+    fill="url(#Gradient1)"
+  />
+  <rect 
+    x="250" y="10" rx="15" ry="15" width="100" height="100" 
+    fill="url(#Gradient2)"
+  />
+</svg>
+</div>
+
+```html
+<svg width="480" height="120">
+
+  <!-- 用 defs 包裹，linearGradient 设定渐变内容 -->
+  <defs>
+    <linearGradient id="Gradient1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="violet"/>
+      <stop offset="40%" stop-color="orange" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="green"/>
+    </linearGradient>
+    <linearGradient id="Gradient2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="cyan"/>
+      <stop offset="100%" stop-color="pink"/>
+    </linearGradient>
+  </defs>
+
+  <rect 
+    x="0" y="10" rx="15" ry="15" width="100" height="100" 
+    fill="url(#Gradient1)"
+  />
+  <rect 
+    x="120" y="10" rx="15" ry="15" width="100" height="100" 
+    fill="url(#Gradient2)"
+  />
+</svg>
+
+<!-- 
+  x1 y1 x2 y2：表示水平/垂直方向的渐变，
+  第一个为 x 不变，y 递进，
+  第二个为 y 不变，x 递进。
+ -->
+```
+#### 径向渐变
+<div text-center>
+<svg width="500" height="120">
+  <defs>
+    <radialGradient id="Gradient3">
+      <stop offset="40%" stop-color="orange" />
+      <stop offset="100%" stop-color="teal"/>
+    </radialGradient>
+    <radialGradient id="Gradient4" cx="0.6" cy="0.6" r="0.25">
+      <stop offset="0%" stop-color="yellow"/>
+      <stop offset="100%" stop-color="lightblue"/>
+    </radialGradient>
+    <radialGradient id="Gradient5"  cx="0.5" cy="0.5" r="0.5" fx="0.25" fy="0.25">
+      <stop offset="0%" stop-color="cyan"/>
+      <stop offset="100%" stop-color="pink"/>
+    </radialGradient>
+  </defs>
+  <rect 
+    x="0" y="10" rx="15" ry="15" width="100" height="100" 
+    fill="url(#Gradient3)"
+  />
+  <rect 
+    x="200" y="10" rx="15" ry="15" width="100" height="100" 
+    fill="url(#Gradient4)"
+  />
+  <rect 
+    x="400" y="10" rx="15" ry="15" width="100" height="100" 
+    fill="url(#Gradient5)"
+  />
+</svg>
+</div>
+
+```html
+<svg width="500" height="120">
+  <defs>
+    <radialGradient id="Gradient3">
+      <stop offset="40%" stop-color="orange" />
+      <stop offset="100%" stop-color="teal"/>
+    </radialGradient>
+    <radialGradient id="Gradient4" cx="0.6" cy="0.6" r="0.25">
+      <stop offset="0%" stop-color="yellow"/>
+      <stop offset="100%" stop-color="lightblue"/>
+    </radialGradient>
+    <radialGradient id="Gradient5"  cx="0.5" cy="0.5" r="0.5" fx="0.25" fy="0.25">
+      <stop offset="0%" stop-color="cyan"/>
+      <stop offset="100%" stop-color="pink"/>
+    </radialGradient>
+  </defs>
+  <rect 
+    x="0" y="10" rx="15" ry="15" width="100" height="100" 
+    fill="url(#Gradient3)"
+  />
+  <rect 
+    x="200" y="10" rx="15" ry="15" width="100" height="100" 
+    fill="url(#Gradient4)"
+  />
+  <rect 
+    x="400" y="10" rx="15" ry="15" width="100" height="100" 
+    fill="url(#Gradient5)"
+  />
+</svg>
+
+<!-- 
+  fx fy：焦点，表示渐变的中心，
+  cx cy r：渐变的边缘位置（圆环），r为半径
+ -->
+```
+下图是径向渐变有关参数的图例：
+<div text-center>
+<svg width="120" height="120">
+  <defs>
+      <radialGradient id="Gradient"
+            cx="0.5" cy="0.5" r="0.5" fx="0.25" fy="0.25">
+        <stop offset="0%" stop-color="chocolate"/>
+        <stop offset="100%" stop-color="cadetblue"/>
+      </radialGradient>
+  </defs>
+
+  <rect x="10" y="10" rx="15" ry="15" width="100" height="100"
+        fill="url(#Gradient)" stroke="sky" stroke-width="3"/>
+
+  <circle cx="60" cy="60" r="50" fill="transparent" stroke="white" stroke-width="2"/>
+  <circle cx="35" cy="35" r="2" fill="white" stroke="white"/>
+  <circle cx="60" cy="60" r="2" fill="white" stroke="white"/>
+  <text x="38" y="40" fill="white" font-family="sans-serif" font-size="10pt">(fx,fy)</text>
+  <text x="63" y="63" fill="white" font-family="sans-serif" font-size="10pt">(cx,cy)</text>
+
+</svg>
+</div>
+
 
 ### 图案
+`图案（Pattern）` 的使用方式和渐变很类似，不过它可以重复：
 
+<div text-center>
+<svg width="200" height="200">
+  <defs>
+    <linearGradient id="Gradient7">
+      <stop offset="5%" stop-color="white"/>
+      <stop offset="95%" stop-color="cadetblue"/>
+    </linearGradient>
+    <linearGradient id="Gradient8" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="5%" stop-color="burlywood"/>
+      <stop offset="95%" stop-color="sandybrown"/>
+    </linearGradient>
+    <pattern id="Pattern" x="0" y="0" width=".25" height=".25">
+      <rect x="0" y="0" width="50" height="50" fill="skyblue"/>
+      <rect x="0" y="0" width="25" height="25" fill="url(#Gradient8)"/>
+      <circle cx="25" cy="25" r="20" fill="url(#Gradient7)"/>
+    </pattern> 
+  </defs>
+  <rect fill="url(#Pattern)" stroke="black" x="0" y="0" width="200" height="200"/>
+</svg>
+</div>
+
+```html
+<svg width="200" height="200">
+  <defs>
+    <linearGradient id="Gradient7">
+      <stop offset="5%" stop-color="white"/>
+      <stop offset="95%" stop-color="cadetblue"/>
+    </linearGradient>
+    <linearGradient id="Gradient8" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="5%" stop-color="burlywood"/>
+      <stop offset="95%" stop-color="sandybrown"/>
+    </linearGradient>
+    <pattern id="Pattern" x="0" y="0" width=".25" height=".25">
+      <rect x="0" y="0" width="50" height="50" fill="skyblue"/>
+      <rect x="0" y="0" width="25" height="25" fill="url(#Gradient8)"/>
+      <circle cx="25" cy="25" r="20" fill="url(#Gradient7)"/>
+    </pattern>
+  </defs>
+  <rect fill="url(#Pattern)" x="0" y="0" width="200" height="200"/>
+</svg>
+
+<!-- 
+  描述：一个矩形用长宽比为 25% 的 pattern 重复填充（会填充 4 次），在 pattern 里有矩形1、
+  矩形2和圆，矩形2使用 Gradient8 的渐变色，圆用 Gradient7 的渐变色。
+  pattern 中的 x 和 y 可以定义偏移的开始点。
+ -->
+```
 ### 文字
+和普通文字类似，SVG 中的文字也有 `font-family`、`font-size`、`letter-spacing` 、`text-decoration` 等属性，它的位置通过 `x` 和 `y` 来定位：
 
-### 裁剪
+<div text-center>
+<svg width="420" height="200">
+<text x="10" y="110" fill="orange" font-size="25">Love 💕</text>
+<text 
+    x="210 240 270 300 330 360 390"
+    y="50 80 110 140 110 80 50"
+    fill="orange" 
+    font-size="25"
+    font-weight="bold">
+    evolove
+  </text>
+</svg>
+</div>
+
+```html
+<svg width="420" height="200">
+  <text x="10" y="110" fill="orange" font-size="25">Love 💕</text>
+  <text 
+      x="210 240 270 300 330 360 390"
+      y="50 80 110 140 110 80 50"
+      fill="orange" 
+      font-size="25"
+      font-weight="bold"
+    >
+    evolove
+  </text>
+</svg>
+
+<!-- 
+  x y：可以是一个坐标，也可以是一个点集数列
+ -->
+```
+
+`rotate` 可以旋转文字，用法分为整体旋转角度和单个文字旋转角度：
+
+<div text-center>
+<svg width="120" height="70">
+<text x="30" y="20" fill="orange" font-size="20" rotate="20">
+    e v o l o v e
+  </text>
+</svg>
+</div>
+
+```html
+<svg width="120" height="70">
+  <text x="30" y="20" fill="orange" font-size="20" rotate="20">
+    e v o l o v e
+  </text>
+  <!-- 
+    <text x="150" y="50" fill="orange" font-size="20" rotate="0 20 40 60 80 100">
+    e v o l o v e
+  </text>
+   -->
+</svg>
+```
+
+如果文字的长度和 `textLength` 设定的长度不一致，渲染会调整字体的位置：
+
+<div text-center>
+ <svg width="350" height="130">
+    <text x="0" y="50" textLength="150" fill="orange" font-size="20">
+      Hello World !
+    </text>
+    <text  x="0" y="100" textLength="300" fill="orange"  font-size="20">
+      Hello World !
+    </text>
+  </svg>
+</div>
+
+```html
+<svg width="350" height="130">
+  <text x="50" y="50" textLength="150" fill="orange" font-size="20">
+    Hello World !
+  </text>
+  <text  x="50" y="100" textLength="300" fill="orange"  font-size="20">
+    Hello World !
+  </text>
+</svg>
+```
+
+
+### 裁剪和遮罩
+裁剪主要使用 `<clipPath>` 标签来标记一条裁剪的路径，然后剪掉部分内容：
+
+<div text-center>
+  <svg width="300" height="300">
+    <defs>
+      <clipPath id="clipPath">
+        <path d="M10 50 A50 50 0 0 1 100 50 A50 50 0 0 1 190 50 Q210 100 100 200  Q-5 100 10 50 Z" />
+      </clipPath>
+    </defs>
+    <rect x="0" y="0" width="200" height="200" fill="orange" clip-path="url(#clipPath)"  />
+  </svg>
+</div>
+
+```html
+<svg width="300" height="300">
+  <defs>
+    <clipPath id="clipPath">
+      <path d="M10 50 A50 50 0 0 1 100 50 A50 50 0 0 1 190 50 Q210 100 100 200  Q-5 100 10 50 Z" />
+    </clipPath>
+  </defs>
+  <rect x="0" y="0" width="200" height="200" fill="orange" clip-path="url(#clipPath)"  />
+</svg>
+
+<!-- 
+  描述：在一个矩形里，裁剪出一个心形
+ -->
+```
+遮罩更多的表示渐变或者阴影，用 `<mask>` 标签表示：
+<div text-center>
+<svg>
+  <defs>
+    <linearGradient id="Gradient10">
+      <stop offset="0" stop-color="white" stop-opacity="0" />
+      <stop offset="1" stop-color="white" stop-opacity="1" />
+    </linearGradient>
+    <mask id="Mask">
+      <rect x="0" y="0" width="200" height="200" fill="url(#Gradient10)"  />
+    </mask>
+  </defs>
+  <rect x="0" y="0" width="200" height="200" fill="orange" />
+  <rect x="0" y="0" width="200" height="200" fill="cyan" mask="url(#Mask)" />
+</svg>
+</div>
+
+```html
+<svg>
+  <defs>
+    <linearGradient id="Gradient10">
+      <stop offset="0" stop-color="white" stop-opacity="0" />
+      <stop offset="1" stop-color="white" stop-opacity="1" />
+    </linearGradient>
+    <mask id="Mask">
+      <rect x="0" y="0" width="200" height="200" fill="url(#Gradient10)"  />
+    </mask>
+  </defs>
+  <rect x="0" y="0" width="200" height="200" fill="orange" />
+  <rect x="0" y="0" width="200" height="200" fill="cyan" mask="url(#Mask)" />
+</svg>
+
+<!-- 
+  描述：底色是橘色，顶色是青色，过度到青色的时候用一个白色的遮罩进行过度，
+  而遮罩本身用了一个渐变色。
+ -->
+```
 
 ### 滤镜
 
-## 工具库
+有关滤镜方面，推荐看下 coco 的 [有意思！强大的 SVG 滤镜](https://www.cnblogs.com/coco1s/p/14577507.html)。
+
+## 库
+市面上有很多 SVG 的库，W3C 针对于 SVG 有一个 [程序列表](https://www.w3.org/Graphics/SVG/WG/wiki/Implementations)，[Google Docs 绘制](www.google.com/google-d-s/drawings/) 也可以输出 SVG。
+对于App类，W3C 支持使用 [inkscape](https://inkscape.org/) 上手绘图，当然也有很多类似于 Sketch、Adobe Illustrator 等现代工具可以绘制导出 SVG。
+
+最后列出一点发现和 SVG 有关的 JavaScript 常见库：[greensock](https://greensock.com/)、[animejs](https://animejs.com/)、[mojs](https://mojs.github.io/)、[vivus](http://maxwellito.github.io/vivus/)、[snapsvg](http://snapsvg.io/)、[lazylinepainter](http://lazylinepainter.info/)、[Textures.js](https://riccardoscalco.it/textures/?spm=a2c6h.12873639.article-detail.10.2f5b6b6caxXyFB) 等。
+
 
 ## 相关资料
 * [SVG 2](https://www.w3.org/TR/SVG2/Overview.html)
@@ -585,8 +934,11 @@ SVG 有 6 种基本形状：`矩形（rect）`、`圆形（circle）`、`椭圆�
 * [SVG 命名空间（xmlns、xmlns:xlink、xmlns:svg）](https://juejin.cn/post/7026187468323946527)
 * [案例+图解带你一文读懂 SVG](https://juejin.cn/post/7124312346947764260)
 * [贝塞尔曲线-维基百科](https://zh.wikipedia.org/zh-cn/%E8%B2%9D%E8%8C%B2%E6%9B%B2%E7%B7%9A)
-
+* [SVG 动画开发实战](https://svg-animation-booklet.vercel.app/)
 * [How to Use SVG Images in CSS and HTML](https://www.freecodecamp.org/news/use-svg-images-in-css-html/)
+* [trianglify](https://trianglify.io/)
+* [Hero Patterns](https://heropatterns.com/)
+* [Adding Shadows to SVG Icons With CSS and SVG Filters](https://css-tricks.com/adding-shadows-to-svg-icons-with-css-and-svg-filters/)
 
 
 
