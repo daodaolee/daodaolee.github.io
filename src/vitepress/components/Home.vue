@@ -56,7 +56,7 @@ const projects = [{
   name: 'Weekly Tracker',
   descr: 'Translate some front-end periodicals',
   icon: 'i-twemoji-newspaper',
-  href: 'https://github.com/daodaolee/typora-scrolls'
+  href: 'https://github.com/FEDarling/weekly-tracker'
 }, {
   name: 'Typora Scrolls',
   descr: 'A typora theme in sheepskin style',
@@ -91,7 +91,6 @@ const projects = [{
   name: 'Inspiration Growing',
   descr: 'Don\'t know what\'s next...',
   icon: 'i-twemoji-thinking-face',
-  href: 'javascript:void(null)'
 }]
 </script>
 

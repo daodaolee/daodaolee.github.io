@@ -24,6 +24,18 @@ async function config() {
       movies: [{
         date: '2022',
         movie: [{
+          title: '阿凡达：水之道',
+          photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16734392434891673439243457.png',
+          link: 'https://movie.douban.com/subject/4811774/'
+        }, {
+          title: '阿凡达',
+          photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16734392195681673439219533.png',
+          link: 'https://movie.douban.com/subject/1652587/'
+        }, {
+          title: '想见你',
+          photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16734391604231673439159614.png',
+          link: 'https://movie.douban.com/subject/35208467/'
+        }, {
           title: '绣春刀II：修罗战场',
           photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16716358595671671635858957.png',
           link: 'https://movie.douban.com/subject/26270502/'
