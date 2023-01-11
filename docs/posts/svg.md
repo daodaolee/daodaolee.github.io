@@ -920,7 +920,7 @@ SVG 可以做到 **线性渐变** 和 **径向渐变**，不过你得用一个 `
 有关滤镜方面，推荐看下 coco 的 [有意思！强大的 SVG 滤镜](https://www.cnblogs.com/coco1s/p/14577507.html)。
 
 ## 库
-市面上有很多 SVG 的库，W3C 针对于 SVG 有一个 [程序列表](https://www.w3.org/Graphics/SVG/WG/wiki/Implementations)，[Google Docs 绘制](www.google.com/google-d-s/drawings/) 也可以输出 SVG。
+市面上有很多 SVG 的库，W3C 针对于 SVG 有一个 [程序列表](https://www.w3.org/Graphics/SVG/WG/wiki/Implementations)，[Google Docs 绘制](https://www.google.com/google-d-s/drawings/) 也可以输出 SVG。
 对于App类，W3C 支持使用 [inkscape](https://inkscape.org/) 上手绘图，当然也有很多类似于 Sketch、Adobe Illustrator 等现代工具可以绘制导出 SVG。
 
 最后列出一点发现和 SVG 有关的 JavaScript 常见库：[greensock](https://greensock.com/)、[animejs](https://animejs.com/)、[mojs](https://mojs.github.io/)、[vivus](http://maxwellito.github.io/vivus/)、[snapsvg](http://snapsvg.io/)、[lazylinepainter](http://lazylinepainter.info/)、[Textures.js](https://riccardoscalco.it/textures/?spm=a2c6h.12873639.article-detail.10.2f5b6b6caxXyFB) 等。
