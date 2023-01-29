@@ -53,7 +53,7 @@ mapping: "AAAAA,BBBBB;CCCCC"
 注意，所有的值都是以 0 为基数的。其次，第五位不是必须的，如果没有 names 属性，就可以忽略第五位。每一位都是用 VLQ 编码表示的，由于 VLQ 是可以变长的，所以每一位可以由多个字符构成。<br />举例，一个位置是 AAAAA 的，在 VLQ 编码中的 A 是 0，所以这个位置的五个位都是 0，代表的意思也就是：该位置在转换后代码的第 0 列，对应 **sources** 属性中第 0 个文件，属于转换前代码的第 0 列第 0 行，对应 **names** 属性中的第 0 个变量。
 
 假设有个文件 `a.js` 有一行代码：`Hello World`，最终打包输出的文件为 `bundle.js`，内容为: `Awesome JavaScript`，映射关系如下：
-<img src="https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/1674989061318yuque_diagram.jpg" style="width:300px">
+<img src="https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/1674993154785yuque_diagram (2).jpg" style="width:300px">
 
 以 World 为例，它原始的位置为（0,6），输出后是 Awesome，位置为（0,0），那么可以这样来表示一下：
 <img src="https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/1674989197316yuque_mind (1).jpeg" style="width:500px">
