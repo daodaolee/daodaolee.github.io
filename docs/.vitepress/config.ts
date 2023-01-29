@@ -22,6 +22,17 @@ async function config() {
       posts: await getPosts(),
       // movies
       movies: [{
+        date: '2023',
+        movie: [{
+          title: '禁闭岛',
+          photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16749909092421674990908548.png',
+          link: 'https://movie.douban.com/subject/2334904/'
+        }, {
+          title: '看不见的客人',
+          photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16749909922421674990991452.png',
+          link: 'https://movie.douban.com/subject/26580232/'
+        }]
+      }, {
         date: '2022',
         movie: [{
           title: '阿凡达：水之道',
@@ -62,7 +73,7 @@ async function config() {
         }, {
           title: '军舰岛',
           photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16687854268751668785426018.png',
-          link: 'https://movie.douban.com/subject/21324900/'
+          link: 'https://movie.douban.com/subject/26445216/'
         }, {
           title: '你眼中的世界',
           photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16687853818781668785381324.png',
