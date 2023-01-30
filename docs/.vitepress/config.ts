@@ -31,6 +31,10 @@ async function config() {
           title: '看不见的客人',
           photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16749909922421674990991452.png',
           link: 'https://movie.douban.com/subject/26580232/'
+        }, {
+          title: '前目的地',
+          photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16750899977911675089997522.png',
+          link: 'https://movie.douban.com/subject/20278505/'
         }]
       }, {
         date: '2022',
