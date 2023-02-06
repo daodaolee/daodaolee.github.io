@@ -24,6 +24,14 @@ async function config() {
       movies: [{
         date: '2023',
         movie: [{
+          title: '安德的游戏',
+          photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16756929930331675692992588.png',
+          link: 'https://movie.douban.com/subject/5323957/'
+        }, {
+          title: '硬核亨利',
+          photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16756929330341675692932596.png',
+          link: 'https://movie.douban.com/subject/25706773/'
+        }, {
           title: '禁闭岛',
           photo: 'https://fastly.jsdelivr.net/gh/daodaolee/photobed@main/img/16749909092421674990908548.png',
           link: 'https://movie.douban.com/subject/2334904/'
