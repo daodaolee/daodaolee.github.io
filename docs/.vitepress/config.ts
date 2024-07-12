@@ -4,7 +4,7 @@ import { getPosts } from './theme/serverUtils'
 async function config() {
   return {
     extends: baseConfig,
-    title: 'DaoDaoLee',
+    title: 'DaoDaoLee | 道道里',
     titleTemplate: false,
     appearance: false,
     markdown: {
