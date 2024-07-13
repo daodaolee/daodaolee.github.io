@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="271px" height="266px" viewBox="0 0 271 266" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>shape-page</title>
+    <g id="shape-page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="编组-4">
+            <rect id="矩形" fill="#FFFFFF" x="0" y="0" width="271" height="266"></rect>
+            <g id="编组-3" transform="translate(16.000000, 8.000000)">
+                <path id="直线" d="M20.25,22.75 L20.25,212.166 L24.5640124,212.166667 C24.9113012,212.166667 25.198314,212.435959 25.2437377,212.785348 L25.25,212.88248 C25.25,212.993606 25.2252049,213.103207 25.1775784,213.202601 L25.1775784,213.202601 L20.1136411,223.770818 C19.9442095,224.124414 19.5321553,224.267738 19.1932921,224.090939 C19.0605347,224.021675 18.9528879,223.909348 18.8865092,223.770818 L18.8865092,223.770818 L13.8225719,213.202601 C13.6531403,212.849005 13.7904918,212.419035 14.1293549,212.242237 C14.224608,212.19254 14.3296417,212.166667 14.4361379,212.166667 L14.4361379,212.166667 L18.75,212.166 L18.75,22.75 L20.25,22.75 Z" fill="#303030" fill-rule="nonzero"></path>
+                <path id="直线" d="M208.88248,17.75 C208.993606,17.75 209.103207,17.7747951 209.202601,17.8224216 L209.202601,17.8224216 L219.770818,22.8863589 C220.124414,23.0557905 220.267738,23.4678447 220.090939,23.8067079 C220.021675,23.9394653 219.909348,24.0471121 219.770818,24.1134908 L219.770818,24.1134908 L209.202601,29.1774281 C208.849005,29.3468597 208.419035,29.2095082 208.242237,28.8706451 C208.19254,28.775392 208.166667,28.6703583 208.166667,28.5638621 L208.166667,28.5638621 L208.166,24.25 L18.75,24.25 L18.75,22.75 L208.166,22.75 L208.166667,18.4359876 C208.166667,18.0886988 208.435959,17.801686 208.785348,17.7562623 Z" fill="#303030" fill-rule="nonzero"></path>
+                <path id="直线-4" d="M70,79 L79,83.5 L70,88 L70,84 L19,84 L19,83 L70,83 L70,79 Z" fill="#979797" fill-rule="nonzero"></path>
+                <rect id="矩形" fill="#A7A7A7" x="79" y="83" width="80" height="81"></rect>
+                <path id="直线-2" d="M79,23 L79,75 L83,75 L78.5,84 L74,75 L78,75 L78,23 L79,23 Z" fill="#979797" fill-rule="nonzero"></path>
+                <path id="直线-3" d="M78.5,23 L83,32 L79,32 L79,84 L78,84 L78,32 L74,32 L78.5,23 Z" fill="#979797" fill-rule="nonzero"></path>
+                <path id="直线-2" d="M79,23 L79,75 L83,75 L78.5,84 L74,75 L78,75 L78,23 L79,23 Z" fill="#979797" fill-rule="nonzero"></path>
+                <path id="直线-3" d="M78.5,23 L83,32 L79,32 L79,84 L78,84 L78,32 L74,32 L78.5,23 Z" fill="#979797" fill-rule="nonzero"></path>
+                <path id="直线-5" d="M28,79 L28,83 L79,83 L79,84 L28,84 L28,88 L19,83.5 L28,79 Z" fill="#979797" fill-rule="nonzero"></path>
+                <text id="0" font-family="PingFangSC-Semibold, PingFang SC" font-size="14" font-weight="500" fill="#696969">
+                    <tspan x="19.6" y="15">0</tspan>
+                </text>
+                <text id="0" transform="translate(4.500000, 36.000000) scale(-1, 1) translate(-4.500000, -36.000000) " font-family="PingFangSC-Semibold, PingFang SC" font-size="14" font-weight="500" fill="#696969">
+                    <tspan x="0.6" y="41">0</tspan>
+                </text>
+                <text id="x" font-family="HannotateSC-W5, Hannotate SC" font-size="18" font-weight="normal" fill="#696969">
+                    <tspan x="230.018" y="27">x</tspan>
+                </text>
+                <text id="Y" font-family="HannotateSC-W7, Hannotate SC" font-size="18" font-weight="bold" fill="#696969">
+                    <tspan x="15.38" y="243">Y</tspan>
+                </text>
+                <text id="x" font-family="HannotateSC-W7, Hannotate SC" font-size="14" font-weight="bold" fill="#696969">
+                    <tspan x="45.636" y="79">x</tspan>
+                </text>
+                <text id="y" font-family="HannotateSC-W7, Hannotate SC" font-size="14" font-weight="bold" fill="#696969">
+                    <tspan x="67.58" y="56">y</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

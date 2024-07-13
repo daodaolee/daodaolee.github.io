@@ -1,0 +1,1 @@
+const c=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];function r(e){const t=new Date(e.split("T")[0]),n=t.getFullYear(),a=t.getMonth(),o=t.getDate();return`${c[a]} ${o}, ${n}`}function s(e){const t=new Date(e),n=t.getFullYear(),a=t.getMonth(),o=t.getDate();return`${c[a]} ${o}, ${n}`}export{s as f,r as u};
