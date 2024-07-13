@@ -26,8 +26,8 @@ const enableMovie = computed(() => !!(route.path === '/movies/'))
       <Page v-else />
     </div>
   </div>
-  <div class="text-center text-0.1rem pt-10 pb-2 op-20 scale-80" style="letter-spacing: 0.2rem;">
-    <a href="https://beian.miit.gov.cn/">浙ICP备2022027583号-1</a>
+  <div class="text-center text-[14px] pt-10 pb-2 scale-80 color-[black]" style="letter-spacing: 0.2rem;">
+    <a href="https://beian.miit.gov.cn/">浙ICP备2022027583号</a>
   </div>
 </template>
 
