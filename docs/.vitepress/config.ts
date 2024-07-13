@@ -16,6 +16,10 @@ async function config() {
     // base: '/vitepress-theme-minimalist',
     base: '/',
     themeConfig: {
+      footer: {
+        message: '浙ICP备2022027583号',
+        copyright: 'Copyright © 2021-present DaoDaoLee'
+      },
       logoDark: '/logo-white.webp',
       logo: '/logo-black.webp',
       // all posts
